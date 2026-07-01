@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Colombia Reals - SA-MP Roleplay</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        dorado: '#F5C518',
+                        discord: '#5865F2',
+                        verde: '#10B981',
+                        oscuro: '#0F0F0F',
+                        grisoscuro: '#1A1A1A',
+                    },
+                    fontFamily: {
+                        sans: ['Segoe UI', 'Roboto', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
+        body { background-color: #0F0F0F; color: white; font-family: 'Segoe UI', sans-serif; }
+
+        /* Logo flotante */
+        .logo-flotante {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 999;
+            transition: all 0.3s ease;
+        }
+        .logo-flotante img { width: 65px; height: auto; }
+
+        /* Barra de navegación */
+        .nav-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 15px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 998;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.8), transparent);
+        }
+        .nav-links { display: flex; gap: 30px; list-style: none; margin-left: 100px; }
+        .nav-links a { color: #AAA; text-decoration: none; font-weight: 600; transition: color 0.3s; }
+        .nav-links a:hover, .nav-links a.active { color: white; border-bottom: 2px solid #F5C518; padding-bottom: 5px; }
+        .btn-discord-nav {
+            background: transparent; border: 2px solid #F5C518; color: #F5C518; padding: 8px 20px; border-radius: 6px;
+            font-weight: bold; cursor: pointer; transition: all 0.3s;
+        }
+        .btn-discord-nav:hover { background: #F5C518; color: black; }
+
+        /* Sección principal */
+        .hero {
+            width: 100%; min-height: 100vh;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.4), #0F0F0F),
+                        url('https://i.imgur.com/9XzLqYk.jpg') center/cover no-repeat;
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
+            text-align: center; padding: 20px; padding-top: 120px;
+        }
+        .hero-logo { width: 320px; height: auto; margin-bottom: 15px; }
+        .hero h1 { font-size: 38px; font-weight: 900; margin-bottom: 8px; text-shadow: 0 2px 10px rgba(0,0,0,0.7); }
+        .hero p { font-size: 18px; color: #DDD; margin-bottom: 40px; }
+        .botones-hero { display: flex; flex-wrap: wrap; gap: 15px; justify-content: center; margin-bottom: 50px; }
+        .btn {
+            padding: 14px 28px; border: none; border-radius: 10px; font-size: 16px; font-weight: bold;
+            cursor: pointer; transition: all 0.3s; display: flex; align-items: center; gap: 8px; text-decoration: none;
+        }
+        .btn:hover { transform: translateY(-3px); box-shadow: 0 8px 20px rgba(0,0,0,0.4); }
+        .btn-discord { background: #5865F2; color: white; }
+        .btn-ip { background: #F5C518; color: black; }
+        .btn-info { background: #10B981; color: white; }
+        .desplazar { font-size: 14px; color: #888; animation: parpadeo 2s infinite; }
+        @keyframes parpadeo { 0%,100% { opacity: 1; } 50% { opacity: 0.4; } }
+
+        /* Sección características */
+        .caracteristicas { padding: 60px 20px; max-width: 1200px; margin: 0 auto; }
+        .titulo-seccion { text-align: center; font-size: 32px; font-weight: 800; margin-bottom: 50px; }
+        .grid-caracteristicas { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
+        .tarjeta {
+            background: #1A1A1A; border: 1px solid #333; border-radius: 10px; padding: 25px; text-align: center;
+            transition: all 0.3s;
+        }
+        .tarjeta:hover { border-color: #F5C518; transform: translateY(-5px); }
+        .tarjeta i { font-size: 36px; color: #F5C518; margin-bottom: 15px; }
+        .tarjeta h3 { font-size: 16px; font-weight: 700; margin-bottom: 10px; }
+        .tarjeta p { font-size: 13px; color: #AAA; line-height: 1.5; }
+
+        /* Sección comunidad */
+        .comunidad {
+            background: #1A1A1A; border-radius: 15px; padding: 40px; margin: 40px auto; max-width: 1000px;
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 30px; text-align: center;
+        }
+        .dato h2 { font-size: 36px; font-weight: 900; margin-bottom: 5px; }
+        .dato:nth-child(1) h2 { color: #818CF8; }
+        .dato:nth-child(2) h2 { color: #34D399; }
+        .dato:nth-child(3) h2 { color: #FBBF24; }
+        .dato:nth-child(4) h2 { color: #F87171; }
+        .dato p { font-size: 14px; color: #CCC; font-weight: 600; }
+
+        /* Pie de página */
+        .footer {
+            background: #0A0A0A; padding: 50px 20px 30px; border-top: 1px solid #222;
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 30px;
+            max-width: 1200px; margin: 0 auto;
+        }
+        .footer-logo { width: 120px; margin-bottom: 15px; }
+        .footer h4 { font-size: 16px; font-weight: 700; margin-bottom: 15px; color: #F5C518; }
+        .footer ul { list-style: none; }
+        .footer ul li { margin-bottom: 8px; }
+        .footer ul li a { color: #AAA; text-decoration: none; font-size: 14px; transition: color 0.3s; }
+        .footer ul li a:hover { color: #F5C518; }
+        .estado-servidor { display: flex; align-items: center; gap: 8px; margin-bottom: 10px; }
+        .punto-verde { width: 12px; height: 12px; background: #10B981; border-radius: 50%; }
+        .copyright { text-align: center; padding-top: 30px; color: #666; font-size: 13px; border-top: 1px solid #222; margin-top: 30px; }
+
+        /* Alerta copiado */
+        .alerta {
+            position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%);
+            background: #10B981; color: black; padding: 12px 25px; border-radius: 8px; font-weight: bold;
+            opacity: 0; transition: opacity 0.3s; z-index: 1000;
+        }
+        .alerta.mostrar { opacity: 1; }
+
+        /* Adaptar a móviles */
+        @media (max-width: 768px) {
+            .nav-bar { padding: 15px 20px; }
+            .nav-links { display: none; }
+            .hero-logo { width: 220px; }
+            .hero h1 { font-size: 28px; }
+            .botones-hero { flex-direction: column; width: 90%; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Logo flotante en esquina superior izquierda -->
+    <div class="logo-flotante">
+        <img src="https://i.imgur.com/8ZkXzLq.png" alt="Colombia Reals">
+    </div>
+
+    <!-- Barra de Navegación -->
+    <nav class="nav-bar">
+        <ul class="nav-links">
+            <li><a href="#" class="active">INICIO</a></li>
+            <li><a href="#informacion">INFORMACIÓN</a></li>
+            <li><a href="#caracteristicas">CARACTERÍSTICAS</a></li>
+            <li><a href="#">GALERÍA</a></li>
+            <li><a href="#">NOTICIAS</a></li>
+            <li><a href="#">CONTACTO</a></li>
+        </ul>
+        <a href="https://discord.gg/4JwxHjG4gB" target="_blank" class="btn-discord-nav">
+            <i class="fa fa-discord"></i> DISCORD
+        </a>
+    </nav>
+
+    <!-- Sección Principal -->
+    <section class="hero">
+        <img src="https://i.imgur.com/8ZkXzLq.png" alt="Colombia Reals Roleplay" class="hero-logo">
+        <h1>BIENVENIDO A COLOMBIA REALS ROLEPLAY</h1>
+        <p>El mejor servidor de Roleplay 100% Colombiano</p>
+
+        <div class="botones-hero">
+            <a href="https://discord.gg/4JwxHjG4gB" target="_blank" class="btn btn-discord">
+                <i class="fa fa-discord"></i> DISCORD OFICIAL<br><small>Únete a nuestra comunidad</small>
+            </a>
+            <button onclick="copiarIP()" class="btn btn-ip">
+                <i class="fa fa-copy"></i> COPIAR IP<br><small>172.83.152.206:9999</small>
+            </button>
+            <a href="#informacion" class="btn btn-info">
+                <i class="fa fa-info-circle"></i> VER INFORMACIÓN<br><small>Conoce todo sobre CR</small>
+            </a>
+        </div>
+
+        <div class="desplazar">
+            <i class="fa fa-angle-down"></i> DESLIZA PARA DESCUBRIR
+        </div>
+    </section>
+
+    <!-- Sección Características -->
+    <section id="caracteristicas" class="caracteristicas">
+        <h2 class="titulo-seccion">¿POR QUÉ ELEGIR <span style="color:#F5C518">COLOMBIA REALS</span>?</h2>
+        <div class="grid-caracteristicas">
+            <div class="tarjeta">
+                <i class="fa fa-truck"></i>
+                <h3>EMPRESAS ÚNICAS</h3>
+                <p>Empresas de reparto, laboratorio, aerolíneas y muchas más para que vivas una experiencia única.</p>
+            </div>
+            <div class="tarjeta">
+                <i class="fa fa-shopping-bag"></i>
+                <h3>100% COLOMBIANO</h3>
+                <p>Trabajos, tiendas D1, Éxito, Gasolineras Terpel y todo inspirado en Colombia.</p>
+            </div>
+            <div class="tarjeta">
+                <i class="fa fa-cogs"></i>
+                <h3>SISTEMAS NUEVOS</h3>
+                <p>Sistemas únicos y exclusivos desarrollados para brindar el mejor Roleplay.</p>
+            </div>
+            <div class="tarjeta">
+                <i class="fa fa-map-marker"></i>
+                <h3>MAPEOS COLOMBIANOS</h3>
+                <p>Mapeos 100% colombianos, creados exclusivamente para Colombia Reals.</p>
+            </div>
+            <div class="tarjeta">
+                <i class="fa fa-users"></i>
+                <h3>FACCIONES</h3>
+                <p>Únete o crea tu propia facción y domina la ciudad junto a tu equipo.</p>
+            </div>
+            <div class="tarjeta">
+                <i class="fa fa-briefcase"></i>
+                <h3>TRABAJOS REALISTAS</h3>
+                <p>Trabajos totalmente colombianos con sistemas realistas y pagos únicos.</p>
+            </div>
+            <div class="tarjeta">
+                <i class="fa fa-rocket"></i>
+                <h3>ACTUALIZACIONES</h3>
+                <p>Actualizaciones constantes para mejorar tu experiencia de juego.</p>
+            </div>
+            <div class="tarjeta">
+                <i class="fa fa-calendar"></i>
+                <h3>EVENTOS CONSTANTES</h3>
+                <p>Eventos diarios, semanales y mensuales con grandes premios.</p>
+            </div>
+            <div class="tarjeta">
+                <i class="fa fa-user-circle"></i>
+                <h3>COMUNIDAD ACTIVA</h3>
+                <p>Más de 100 jugadores activos y una comunidad en crecimiento.</p>
+            </div>
+            <div class="tarjeta">
+                <i class="fa fa-shield"></i>
+                <h3>SISTEMA ANTI-CHEAT</h3>
+                <p>Sistema anti-cheat avanzado para mantener el juego limpio y justo.</p>
+            </div>
+        </div>
+
+        <!-- Sección Comunidad -->
+        <div class="comunidad" id="informacion">
+            <div class="dato">
+                <h2>+100</h2>
+                <p>USUARIOS REGISTRADOS</p>
+            </div>
+            <div class="dato">
+                <h2>24/7</h2>
+                <p>SERVIDOR ONLINE</p>
+            </div>
+            <div class="dato">
+                <h2>EVENTOS</h2>
+                <p>CONSTANTES</p>
+            </div>
+            <div class="dato">
+                <h2>100%</h2>
+                <p>ROLEPLAY COLOMBIANO</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pie de Página -->
+    <footer class="footer">
+        <div>
+            <img src="https://i.imgur.com/8ZkXzLq.png" alt="Colombia Reals" class="footer-logo">
+            <p style="font-size:14px; color:#AAA; margin-bottom:10px;">El mejor servidor de Roleplay Colombiano</p>
+            <p style="font-weight:bold; color:#F5C518;">IP: 172.83.152.206:9999</p>
+        </div>
+        <div>
+            <h4>ENLACES RÁPIDOS</h4>
+            <ul>
+                <li><a href="#">Inicio</a></li>
+                <li><a href="#informacion">Información</a></li>
+                <li><a href="#caracteristicas">Características</a></li>
+                <li><a href="#">Noticias</a></li>
+                <li><a href="#">Contacto</a></li>
+            </ul>
+        </div>
+        <div>
+            <h4>SÍGUENOS</h4>
+            <ul>
+                <li><a href="https://discord.gg/4JwxHjG4gB" target="_blank"><i class="fa fa-discord"></i> Discord Oficial</a></li>
+                <li><a href="#"><i class="fa fa-youtube-play"></i> YouTube</a></li>
+                <li><a href="#"><i class="fa fa-tiktok"></i> TikTok</a></li>
+                <li><a href="#"><i class="fa fa-instagram"></i> Instagram</a></li>
+            </ul>
+        </div>
+        <div>
+            <h4>ESTADO DEL SERVIDOR</h4>
+            <div class="estado-servidor">
+                <span class="punto-verde"></span>
+                <span style="color:#10B981; font-weight:bold;">ONLINE</span>
+            </div>
+            <p style="font-size:14px; color:#AAA;">Jugadores conectados: 45 / 200</p>
+        </div>
+        <div class="copyright">
+            © 2026 Colombia Reals Roleplay. Todos los derechos reservados.
+        </div>
+    </footer>
+
+    <!-- Alerta de copiado -->
+    <div class="alerta" id="alerta">✅ IP copiada al portapapeles!</div>
+
+    <script>
+        // Función para copiar la IP
+        function copiarIP() {
+            const ip = "172.83.152.206:9999";
+            navigator.clipboard.writeText(ip).then(() => {
+                const alerta = document.getElementById('alerta');
+                alerta.classList.add('mostrar');
+                setTimeout(() => alerta.classList.remove('mostrar'), 2500);
+            });
+        }
+
+        // Efecto al hacer scroll en el logo
+        window.addEventListener('scroll', () => {
+            const logo = document.querySelector('.logo-flotante img');
+            if(window.scrollY > 50) {
+                logo.style.width = '50px';
+            } else {
+                logo.style.width = '65px';
+            }
+        });
+    </script>
+</body>
+                  </html>
+
