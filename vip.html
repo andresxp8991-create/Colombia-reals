@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZONA VIP - Colombia Reals</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css">
+    <script>
+        window.addEventListener('load', () => {
+            if(!localStorage.getItem('nombreIC')) window.location.replace('login.html');
+        });
+    </script>
+    <style>
+        *{margin:0;padding:0;box-sizing:border-box;}
+        body{min-height:100vh;background:linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0.9)),url('https://cdn.discordapp.com/attachments/1515011245538021390/1522667848269299782/file_000000007e0071f58a8cf07bc6c63599.png?ex=6a494e70&is=6a47fcf0&hm=27abdc961f5bdd428d1a88eef0c8a5adbb461fb600c2933deba79be7762bde44&') center/cover no-repeat fixed;color:white;font-family:Segoe UI,sans-serif;padding:20px;padding-top:90px;}
+        .logo-flotante{position:fixed;top:15px;left:15px;z-index:999;animation:flotar-logo 4s infinite ease-in-out;}
+        .logo-flotante img{width:65px;border-radius:8px;}
+        @keyframes flotar-logo{0%{transform:translateY(0);}50%{transform:translateY(-8px);}100%{transform:translateY(0);}}
+        .contenedor{max-width:1100px;margin:0 auto;}
+        .volver{color:#93C5FD;text-decoration:none;font-weight:bold;display:inline-flex;align-items:center;gap:8px;margin-bottom:25px;}
+        .volver:hover{color:#F5C518;}
+        h1{color:#F5C518;text-align:center;margin-bottom:40px;font-size:36px;filter:drop-shadow(0 0 15px rgba(245,197,24,0.5));}
+        .grid-vip{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:20px;}
+        .recuadro{background:rgba(17,24,39,0.9);border:2px solid #F5C518;border-radius:14px;padding:20px;text-align:center;transition:0.3s;}
+        .recuadro:hover{transform:translateY(-5px);box-shadow:0 0 20px rgba(245,197,24,0.3);}
+        .recuadro img{width:100%;height:200px;object-fit:cover;border-radius:10px;margin-bottom:15px;border:1px solid #444;}
+        .recuadro h3{color:#F5C518;margin-bottom:10px;font-size:20px;}
+        .recuadro p{color:#ddd;margin-bottom:15px;line-height:1.6;}
+        .btn-soporte{display:inline-block;background:#5865F2;color:white;padding:12px 24px;border-radius:8px;text-decoration:none;font-weight:bold;transition:0.3s;}
+        .btn-soporte:hover{background:#4752C4;transform:translateY(-2px);}
+        .btn-soporte i{margin-right:8px;}
+    </style>
+</head>
+<body>
+    <div class="logo-flotante">
+        <img src="https://cdn.discordapp.com/attachments/1488264409825542277/1516009727480561836/Picsart_26-05-25_17-31-56-817.png?ex=6a48d095&is=6a477f15&hm=e1b8c2549fe60a5e07b7b9cc51c57123de59401e39c80af75db1155d99ddc11e&" alt="Colombia Reals">
+    </div>
+
+    <div class="contenedor">
+        <a href="index.html" class="volver"><i class="fa fa-arrow-left"></i> Volver al inicio</a>
+        <h1>👑 ZONA VIP EXCLUSIVA</h1>
+
+        <div class="grid-vip">
+            <div class="recuadro">
+                <img src="https://cdn.discordapp.com/attachments/1488264409351721141/1522688769877344256/Screenshot_20260703-144006.png?ex=6a4961ec&is=6a48106c&hm=bf095ac86e1e529d1c2e5bff1750e9e7ab6aaa18945b39ead51600363c5083f8&" alt="Vortex">
+                <h3>VORTEX</h3>
+                <p>Vehículo Exclusivo OOC<br>Abre ticket para comprarlo</p>
+                <a href="https://discord.com/channels/1488264408361865238/1488264409624084548" target="_blank" class="btn-soporte"><i class="fa fa-headphones"></i> SOPORTE</a>
+            </div>
+
+            <div class="recuadro">
+                <img src="https://cdn.discordapp.com/attachments/1488264409351721141/1522688774574702652/Tropic-GTAVC.webp?ex=6a4961ee&is=6a48106e&hm=6335cf4ad8c8c867f3115ea66ebe02e4c26cb912b1783fc485379504d76b9844&" alt="Yate Exclusivo">
+                <h3>YATE EXCLUSIVO</h3>
+                <p>Embarcación única solo para miembros VIP</p>
+                <a href="https://discord.com/channels/1488264408361865238/1488264409624084548" target="_blank" class="btn-soporte"><i class="fa fa-headphones"></i> SOPORTE</a>
+            </div>
+
+            <div class="recuadro">
+                <img src="https://cdn.discordapp.com/attachments/1488264409351721141/1522688782195888188/Screenshot_20260703-143825.png?ex=6a4961ef&is=6a48106f&hm=8109b7900a88a6ef1e927f7b615676fd17a55536a611017e322291996261734c&" alt="Hydra Exclusivo">
+                <h3>HYDRA EXCLUSIVO</h3>
+                <p>Avión caza con diseños y mejoras únicas</p>
+                <a href="https://discord.com/channels/1488264408361865238/1488264409624084548" target="_blank" class="btn-soporte"><i class="fa fa-headphones"></i> SOPORTE</a>
+            </div>
+
+            <div class="recuadro">
+                <img src="https://cdn.discordapp.com/attachments/1488264409351721141/1522688786914607154/why-does-the-patriot-from-the-definitive-edition-is-red-v0-9ma6kygrfpz91.jpg?ex=6a4961f0&is=6a481070&hm=5996dd9e0680b215c52aa7da869c2bdd4752856b78bdd73a6d3caa451924d6a3&" alt="Patriot Exclusivo">
+                <h3>PATRIOT EXCLUSIVO</h3>
+                <p>Todoterreno VIP con detalles personalizados</p>
+                <a href="https://discord.com/channels/1488264408361865238/1488264409624084548" target="_blank" class="btn-soporte"><i class="fa fa-headphones"></i> SOPORTE</a>
+            </div>
+
+            <div class="recuadro">
+                <img src="https://cdn.discordapp.com/attachments/1488264409351721141/1522688791373021214/hd-remastered-infernus_1686002557_732545.webp?ex=6a4961f2&is=6a481072&hm=929504eb43e1384f8aab34be4337a09077be64f5ec6d99a0154a3e31e82856b7&" alt="Infernus Exclusivo">
+                <h3>INFERNUS EXCLUSIVO</h3>
+                <p>El deportivo más rápido con versión VIP</p>
+                <a href="https://discord.com/channels/1488264408361865238/1488264409624084548" target="_blank" class="btn-soporte"><i class="fa fa-headphones"></i> SOPORTE</a>
+            </div>
+
+            <div class="recuadro">
+                <h3>EMPRESAS DE RAPEROS</h3>
+                <p>Con nuevos sistemas exclusivos OOC</p>
+                <a href="https://discord.com/channels/1488264408361865238/1488264409624084548" target="_blank" class="btn-soporte"><i class="fa fa-headphones"></i> SOLICITAR</a>
+            </div>
+
+            <div class="recuadro">
+                <h3>LABORATORIO MEJORADO</h3>
+                <p>Instalaciones y funciones avanzadas OOC</p>
+                <a href="https://discord.com/channels/1488264408361865238/1488264409624084548" target="_blank" class="btn-soporte"><i class="fa fa-headphones"></i> SOLICITAR</a>
+            </div>
+
+            <div class="recuadro">
+                <h3>AEROLÍNEAS MEJORADAS</h3>
+                <p>Si quieres que tu empresa, aerolínea o laboratorio tenga un mapeo diferente a los demás es un precio adicional. Se hace 100% modificado como lo pidas.</p>
+                <a href="https://discord.com/channels/1488264408361865238/1488264409624084548" target="_blank" class="btn-soporte"><i class="fa fa-headphones"></i> PERSONALIZAR</a>
+            </div>
+
+            <div class="recuadro">
+                <h3>MAFIAS CON HQ EXCLUSIVO</h3>
+                <p>Sedes propias, diseños únicos y más beneficios</p>
+                <a href="https://discord.com/channels/1488264408361865238/1488264409624084548" target="_blank" class="btn-soporte"><i class="fa fa-headphones"></i> ADQUIRIR</a>
+            </div>
+
+            <div class="recuadro">
+                <img src="https://cdn.discordapp.com/attachments/1488264410039586937/1520078157439570171/image.png?ex=6a491d1a&is=6a47cb9a&hm=f3e02339a100aa5aca21f322c2d864dd7f9acdcd26eb7a7cd29394a3e31e8285&" alt="VIP Tussi">
+                <h3>VIP TUSSI</h3>
+                <p>Contenido y beneficios especiales</p>
+                <a href="https://discord.com/channels/1488264408361865238/1488264409624084548" target="_blank" class="btn-soporte"><i class="fa fa-headphones"></i> ADQUIRIR</a>
+            </div>
+        </div>
+    </div>
+
+    <div style="position:fixed;bottom:0;left:0;width:1px;height:1px;opacity:0;pointer-events:none;overflow:hidden;z-index:-1;">
+        <iframe id="musica" width="1" height="1" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+    </div>
+    <script>
+        const canciones = [
+            "https://www.youtube.com/embed/qrTz4OEMk_0?si=8RyOx-PKC4GOfQV7&autoplay=1&mute=0&loop=0&playlist=qrTz4OEMk_0",
+            "https://www.youtube.com/embed/h269QbGCvPs?si=YupAsbabxcT1aI1t&autoplay=1&mute=0&loop=0&playlist=h269QbGCvPs",
+            "https://www.youtube.com/embed/7bQcByZicWw?si=px82ifDxXfADJSgY&autoplay=1&mute=0&loop=0&playlist=7bQcByZicWw",
+            "https://www.youtube.com/embed/siFCXKOQoXI?si=ysiJvczcHK9OUwV8&autoplay=1&mute=0&loop=0&playlist=siFCXKOQoXI",
+            "https://www.youtube.com/embed/0iklBbU6FXI?si=TveBCZOO_BoggBcr&autoplay=1&mute=0&loop=0&playlist=0iklBbU6FXI",
+            "https://www.youtube.com/embed/IT5RmPy0Tf4?si=UePtmHhUPDIsV41X&autoplay=1&mute=0&loop=0&playlist=IT5RmPy0Tf4",
+            "https://www.youtube.com/embed/aQnsbFtUHG4?si=lFOO4lpLyopQb2Jg&autoplay=1&mute=0&loop=0&playlist=aQnsbFtUHG4",
+            "https://www.youtube.com/embed/ZFww08Dc4ws?si=DpZqpgNd3opY5qZW&autoplay=1&mute=0&loop=0&playlist=ZFww08Dc4ws",
+            "https://www.youtube.com/embed/zkqfSHb1A_k?si=JPPK_tAlL2rkaTYM&autoplay=1&mute=0&loop=0&playlist=zkqfSHb1A_k",
+            "https://www.youtube.com/embed/ekFwDO6xOn0?si=N_eJzawQ-3NEPPTU&autoplay=1&mute=0&loop=0&playlist=ekFwDO6xOn0",
+            "https://www.youtube.com/embed/mzBg_Ln8j2U?si=prFIf4poOEkX-1VP&autoplay=1&mute=0&loop=0&playlist=mzBg_Ln8j2U",
+            "https://www.youtube.com/embed/NVLgkXylEuQ?si=jFhgSpbffXkpqbwu&autoplay=1&mute=0&loop=0&playlist=NVLgkXylEuQ",
+            "https://www.youtube.com/embed/TqsETF0P_Dw?si=6UP2kqBN7IHwMN-g&autoplay=1&mute=0&loop=0&playlist=TqsETF0P_Dw"
+        ];
+        let indiceActual = parseInt(localStorage.getItem('indiceCancion') || Math.floor(Math.random() * canciones.length));
+        document.getElementById('musica').src = canciones[indiceActual];
+        localStorage.setItem('indiceCancion', indiceActual);
+        setInterval(() => {
+            indiceActual = (indiceActual + 1) % canciones.length;
+            localStorage.setItem('indiceCancion', indiceActual);
+            document.getElementById('musica').src = canciones[indiceActual];
+        }, 180000);
+    </script>
+</body>
+      </html>
+                                           
