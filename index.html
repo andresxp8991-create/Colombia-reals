@@ -18,9 +18,12 @@
     <style>
         *{margin:0;padding:0;box-sizing:border-box;}
         body{font-family:Segoe UI,sans-serif;color:white;display:none;}
-        .seccion{min-height:100vh;background:linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.8)),url('https://cdn.discordapp.com/attachments/1515011245538021390/1522656555760357386/file_000000007e0071f58a8cf07bc6c63599.png?ex=6a4943ec&is=6a47f26c&hm=5ef321e63c7e586e0882001e715a58ecb5b8c54c183268663648a1bb284b824d&') center/cover no-repeat fixed;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:20px;padding-top:90px;}
-        @keyframes flotar{0%{transform:translateY(0);}50%{transform:translateY(-12px);}100%{transform:translateY(0);}}
-        .logo{max-width:420px;width:90%;margin-bottom:25px;border-radius:12px;animation:flotar 4.5s infinite ease-in-out;filter:drop-shadow(0 0 25px rgba(245,197,24,0.5));}
+        .seccion{min-height:100vh;background:linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.8)),url('https://cdn.discordapp.com/attachments/1515011245538021390/1522667848269299782/file_000000007e0071f58a8cf07bc6c63599.png?ex=6a494e70&is=6a47fcf0&hm=27abdc961f5bdd428d1a88eef0c8a5adbb461fb600c2933deba79be7762bde44&') center/cover no-repeat fixed;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:20px;padding-top:90px;}
+        @keyframes flotar-logo{0%{transform:translateY(0) rotate(0deg);}50%{transform:translateY(-8px) rotate(0.5deg);}100%{transform:translateY(0) rotate(0deg);}}
+        .logo-flotante{position:fixed;top:15px;left:15px;z-index:999;animation:flotar-logo 4s infinite ease-in-out;}
+        .logo-flotante img{width:65px;border-radius:8px;filter:drop-shadow(0 0 15px rgba(245,197,24,0.5));}
+        @keyframes flotar-principal{0%{transform:translateY(0);}50%{transform:translateY(-12px);}100%{transform:translateY(0);}}
+        .logo-principal{max-width:420px;width:90%;margin-bottom:25px;border-radius:12px;animation:flotar-principal 4.5s infinite ease-in-out;filter:drop-shadow(0 0 25px rgba(245,197,24,0.5));}
         .barra{position:fixed;top:15px;right:15px;z-index:999;}
         .usuario{display:flex;align-items:center;gap:8px;background:rgba(37,99,235,0.2);border:2px solid #2563EB;padding:8px 16px;border-radius:20px;font-weight:bold;color:#93C5FD;}
         .cerrar{background:none;border:none;color:#ff6b6b;font-size:18px;cursor:pointer;}
@@ -40,9 +43,12 @@
     </style>
 </head>
 <body>
+    <div class="logo-flotante">
+        <img src="https://cdn.discordapp.com/attachments/1488264409825542277/1516009727480561836/Picsart_26-05-25_17-31-56-817.png?ex=6a48d095&is=6a477f15&hm=e1b8c2549fe60a5e07b7b9cc51c57123de59401e39c80af75db1155d99ddc11e&" alt="Colombia Reals">
+    </div>
     <div class="barra"><div id="zona"></div></div>
     <section class="seccion">
-        <img src="https://cdn.discordapp.com/attachments/1488264409825542277/1516009727480561836/Picsart_26-05-25_17-31-56-817.png?ex=6a48d095&is=6a477f15&hm=e1b8c2549fe60a5e07b7b9cc51c57123de59401e39c80af75db1155d99ddc11e&" alt="Colombia Reals" class="logo">
+        <img src="https://cdn.discordapp.com/attachments/1488264409825542277/1516009727480561836/Picsart_26-05-25_17-31-56-817.png?ex=6a48d095&is=6a477f15&hm=e1b8c2549fe60a5e07b7b9cc51c57123de59401e39c80af75db1155d99ddc11e&" alt="Colombia Reals" class="logo-principal">
         <h1 class="titulo">COLOMBIA REALS ROLEPLAY</h1>
         <p class="sub">Servidor 100% colombiano de SA-MP</p>
         <div class="botones">
@@ -60,7 +66,6 @@
     <div id="aviso" class="aviso">✅ IP copiada!</div>
 
     <script>
-        // PROTECCIÓN OBLIGATORIA
         window.addEventListener('load', () => {
             const nombre = localStorage.getItem('nombreIC');
             if(!nombre) { window.location.replace('login.html'); return; }
@@ -74,6 +79,35 @@
             });
         }
     </script>
+
+    <!-- REPRODUCTOR CON CONTINUIDAD -->
+    <div style="position:fixed;bottom:0;left:0;width:1px;height:1px;opacity:0;pointer-events:none;overflow:hidden;z-index:-1;">
+        <iframe id="musica" width="1" height="1" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+    </div>
+    <script>
+        const canciones = [
+            "https://www.youtube.com/embed/qrTz4OEMk_0?si=8RyOx-PKC4GOfQV7&autoplay=1&mute=0&loop=0&playlist=qrTz4OEMk_0",
+            "https://www.youtube.com/embed/h269QbGCvPs?si=YupAsbabxcT1aI1t&autoplay=1&mute=0&loop=0&playlist=h269QbGCvPs",
+            "https://www.youtube.com/embed/7bQcByZicWw?si=px82ifDxXfADJSgY&autoplay=1&mute=0&loop=0&playlist=7bQcByZicWw",
+            "https://www.youtube.com/embed/siFCXKOQoXI?si=ysiJvczcHK9OUwV8&autoplay=1&mute=0&loop=0&playlist=siFCXKOQoXI",
+            "https://www.youtube.com/embed/0iklBbU6FXI?si=TveBCZOO_BoggBcr&autoplay=1&mute=0&loop=0&playlist=0iklBbU6FXI",
+            "https://www.youtube.com/embed/IT5RmPy0Tf4?si=UePtmHhUPDIsV41X&autoplay=1&mute=0&loop=0&playlist=IT5RmPy0Tf4",
+            "https://www.youtube.com/embed/aQnsbFtUHG4?si=lFOO4lpLyopQb2Jg&autoplay=1&mute=0&loop=0&playlist=aQnsbFtUHG4",
+            "https://www.youtube.com/embed/ZFww08Dc4ws?si=DpZqpgNd3opY5qZW&autoplay=1&mute=0&loop=0&playlist=ZFww08Dc4ws",
+            "https://www.youtube.com/embed/zkqfSHb1A_k?si=JPPK_tAlL2rkaTYM&autoplay=1&mute=0&loop=0&playlist=zkqfSHb1A_k",
+            "https://www.youtube.com/embed/ekFwDO6xOn0?si=N_eJzawQ-3NEPPTU&autoplay=1&mute=0&loop=0&playlist=ekFwDO6xOn0",
+            "https://www.youtube.com/embed/mzBg_Ln8j2U?si=prFIf4poOEkX-1VP&autoplay=1&mute=0&loop=0&playlist=mzBg_Ln8j2U",
+            "https://www.youtube.com/embed/NVLgkXylEuQ?si=jFhgSpbffXkpqbwu&autoplay=1&mute=0&loop=0&playlist=NVLgkXylEuQ",
+            "https://www.youtube.com/embed/TqsETF0P_Dw?si=6UP2kqBN7IHwMN-g&autoplay=1&mute=0&loop=0&playlist=TqsETF0P_Dw"
+        ];
+        let indiceActual = parseInt(localStorage.getItem('indiceCancion') || Math.floor(Math.random() * canciones.length));
+        document.getElementById('musica').src = canciones[indiceActual];
+        localStorage.setItem('indiceCancion', indiceActual);
+        setInterval(() => {
+            indiceActual = (indiceActual + 1) % canciones.length;
+            localStorage.setItem('indiceCancion', indiceActual);
+            document.getElementById('musica').src = canciones[indiceActual];
+        }, 180000);
+    </script>
 </body>
 </html>
-
