@@ -13,21 +13,43 @@
     </script>
     <style>
         *{margin:0;padding:0;box-sizing:border-box;}
-        body{min-height:100vh;background:linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0.9)),url('https://cdn.discordapp.com/attachments/1515011245538021390/1522656555760357386/file_000000007e0071f58a8cf07bc6c63599.png?ex=6a4943ec&is=6a47f26c&hm=5ef321e63c7e586e0882001e715a58ecb5b8c54c183268663648a1bb284b824d&') center/cover no-repeat fixed;color:white;font-family:Segoe UI,sans-serif;padding:20px;}
+        body{min-height:100vh;background:linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0.9)),url('https://cdn.discordapp.com/attachments/1515011245538021390/1522667848269299782/file_000000007e0071f58a8cf07bc6c63599.png?ex=6a494e70&is=6a47fcf0&hm=27abdc961f5bdd428d1a88eef0c8a5adbb461fb600c2933deba79be7762bde44&') center/cover no-repeat fixed;color:white;font-family:Segoe UI,sans-serif;padding:20px;padding-top:90px;}
+        .logo-flotante{position:fixed;top:15px;left:15px;z-index:999;animation:flotar-logo 4s infinite ease-in-out;}
+        .logo-flotante img{width:65px;border-radius:8px;}
+        @keyframes flotar-logo{0%{transform:translateY(0);}50%{transform:translateY(-8px);}100%{transform:translateY(0);}}
         .contenedor{max-width:700px;margin:0 auto;}
         .volver{color:#93C5FD;text-decoration:none;font-weight:bold;display:inline-block;margin-bottom:25px;}
         .volver:hover{color:#F5C518;}
-        h1{color:#F5C518;text-align:center;margin-bottom:30px;}
-        .enlace{display:block;background:#5865F2;color:white;padding:15px;border-radius:10px;text-decoration:none;font-weight:bold;text-align:center;margin-bottom:15px;transition:0.3s;}
-        .enlace:hover{background:#4752C4;transform:translateY(-2px);}
+        h1{color:#F5C518;text-align:center;margin-bottom:30px;font-size:32px;}
+        .enlace{display:block;background:rgba(88,101,242,0.2);border:2px solid #5865F2;color:white;padding:16px;border-radius:10px;text-decoration:none;font-weight:bold;text-align:center;margin-bottom:15px;transition:0.3s;}
+        .enlace:hover{background:#5865F2;transform:translateY(-2px);}
+        .enlace i{margin-right:10px;}
     </style>
 </head>
 <body>
+    <div class="logo-flotante">
+        <img src="https://cdn.discordapp.com/attachments/1488264409825542277/1516009727480561836/Picsart_26-05-25_17-31-56-817.png?ex=6a48d095&is=6a477f15&hm=e1b8c2549fe60a5e07b7b9cc51c57123de59401e39c80af75db1155d99ddc11e&" alt="Colombia Reals">
+    </div>
+
     <div class="contenedor">
-        <a href="index.html" class="volver"><i class="fa fa-arrow-left"></i> Volver</a>
-        <h1>💬 DISCORDS OFICIALES</h1>
-        <a href="https://discord.gg/REsXTSrvCa" target="_blank" class="enlace">Servidor Principal</a>
+        <a href="index.html" class="volver"><i class="fa fa-arrow-left"></i> Volver al inicio</a>
+        <h1>💬 TODOS LOS DISCORDS OFICIALES</h1>
+        
+        <a href="https://discord.gg/REsXTSrvCa" target="_blank" class="enlace">
+            <i class="fa fa-discord"></i> Servidor Principal de Colombia Reals
+        </a>
+        <a href="https://discord.gg/JJqUZzePXk" target="_blank" class="enlace">
+            <i class="fa fa-shield"></i> Cuerpo Policial Nacional
+        </a>
+        <a href="https://discord.gg/tuxFkFP7Xt" target="_blank" class="enlace">
+            <i class="fa fa-flag"></i> Ejército Nacional de Colombia
+        </a>
+        <a href="#" class="enlace">
+            <i class="fa fa-building"></i> Empresas y Negocios
+        </a>
+        <a href="#" class="enlace">
+            <i class="fa fa-users"></i> Organizaciones y Bandas
+        </a>
     </div>
 </body>
 </html>
-
