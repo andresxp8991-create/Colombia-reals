@@ -7,39 +7,76 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css">
     <script>
-        // PROTECCIÓN
         window.addEventListener('load', () => {
-            if(!localStorage.getItem('nombreIC')) {
-                window.location.replace('login.html');
-            }
+            if(!localStorage.getItem('nombreIC')) window.location.replace('login.html');
         });
     </script>
     <style>
         *{margin:0;padding:0;box-sizing:border-box;}
-        body{min-height:100vh;background:linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0.9)),url('https://cdn.discordapp.com/attachments/1515011245538021390/1522656555760357386/file_000000007e0071f58a8cf07bc6c63599.png?ex=6a4943ec&is=6a47f26c&hm=5ef321e63c7e586e0882001e715a58ecb5b8c54c183268663648a1bb284b824d&') center/cover no-repeat fixed;color:white;font-family:Segoe UI,sans-serif;padding:20px;}
+        body{min-height:100vh;background:linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0.9)),url('https://cdn.discordapp.com/attachments/1515011245538021390/1522667848269299782/file_000000007e0071f58a8cf07bc6c63599.png?ex=6a494e70&is=6a47fcf0&hm=27abdc961f5bdd428d1a88eef0c8a5adbb461fb600c2933deba79be7762bde44&') center/cover no-repeat fixed;color:white;font-family:Segoe UI,sans-serif;padding:20px;padding-top:90px;}
+        .logo-flotante{position:fixed;top:15px;left:15px;z-index:999;animation:flotar-logo 4s infinite ease-in-out;}
+        .logo-flotante img{width:65px;border-radius:8px;}
+        @keyframes flotar-logo{0%{transform:translateY(0);}50%{transform:translateY(-8px);}100%{transform:translateY(0);}}
         .contenedor{max-width:900px;margin:0 auto;}
         .volver{display:inline-flex;align-items:center;gap:8px;color:#93C5FD;text-decoration:none;margin-bottom:25px;font-weight:bold;}
         .volver:hover{color:#F5C518;}
-        h1{color:#F5C518;margin-bottom:30px;text-align:center;}
-        .seccion{background:rgba(17,24,39,0.9);border-radius:12px;padding:20px;margin-bottom:20px;border:1px solid #374151;}
-        h2{color:#CE1126;margin-bottom:15px;}
+        h1{color:#F5C518;margin-bottom:30px;text-align:center;font-size:32px;}
+        .seccion{background:rgba(17,24,39,0.9);border-radius:12px;padding:25px;margin-bottom:25px;border:1px solid #374151;}
+        h2{color:#CE1126;margin-bottom:18px;font-size:22px;}
+        ul{list-style:none;padding-left:0;}
+        li{padding:8px 0;border-bottom:1px solid #2D3748;}
+        li:last-child{border-bottom:none;}
     </style>
 </head>
 <body>
+    <div class="logo-flotante">
+        <img src="https://cdn.discordapp.com/attachments/1488264409825542277/1516009727480561836/Picsart_26-05-25_17-31-56-817.png?ex=6a48d095&is=6a477f15&hm=e1b8c2549fe60a5e07b7b9cc51c57123de59401e39c80af75db1155d99ddc11e&" alt="Colombia Reals">
+    </div>
+
     <div class="contenedor">
         <a href="index.html" class="volver"><i class="fa fa-arrow-left"></i> Volver al inicio</a>
-        <h1>📋 SANCIONES DEL SERVIDOR</h1>
+        <h1>📋 ESCALA COMPLETA DE SANCIONES</h1>
 
         <div id="rol" class="seccion">
-            <h2>⚖️ Sanciones de Rol</h2>
-            <p>Aquí irán las reglas y sanciones por incumplimiento de rol.</p>
+            <h2>⚖️ SANCIONES DE ROL</h2>
+            <ul>
+                <li>• MG (Metagaming): Jail 30 Minutos</li>
+                <li>• PG (Powergaming): Jail 20 Minutos</li>
+                <li>• DM (Deathmatch): Jail 45 Minutos</li>
+                <li>• VDM (Vehicle Deathmatch): Jail 45 Minutos</li>
+                <li>• RK (Revenge Kill): Jail 45 Minutos</li>
+                <li>• NRA (No Rol de Arma): Jail 20 Minutos</li>
+                <li>• NVVPJ (No Valorar la Vida): Jail 30 Minutos</li>
+                <li>• Fear RP: Jail 30 Minutos</li>
+                <li>• Fail RP: Jail 20 Minutos</li>
+                <li>• Bad Driving: Jail 15 Minutos</li>
+                <li>• Combat Logging: Jail 60 Minutos</li>
+                <li>• Evasión de Rol: Jail 60 Minutos</li>
+            </ul>
+        </div>
+
+        <div id="chat" class="seccion">
+            <h2>💬 SANCIONES DE CHAT</h2>
+            <ul>
+                <li>• Spam/Flood: Mute 10 Minutos</li>
+                <li>• Insultos OOC: Mute 20 Minutos</li>
+                <li>• Abuso de mayúsculas: Advertencia</li>
+                <li>• Publicidad ajena: Mute 60 Minutos</li>
+                <li>• Faltas de respeto: Mute 30 Minutos</li>
+            </ul>
         </div>
 
         <div id="ban" class="seccion">
-            <h2>🚫 Baneos Permanentes</h2>
-            <p>Aquí irán las causas de baneo definitivo.</p>
+            <h2>🚫 BAN PERMANENTE</h2>
+            <ul>
+                <li>• Uso de hacks o programas externos</li>
+                <li>• Venta de cuentas o dinero del servidor</li>
+                <li>• Suplantación de personal de administración</li>
+                <li>• Abuso grave de errores del juego</li>
+                <li>• Multicuentas para evadir sanciones</li>
+                <li>• Cualquier falta grave determinada por el Staff</li>
+            </ul>
         </div>
     </div>
 </body>
 </html>
-
