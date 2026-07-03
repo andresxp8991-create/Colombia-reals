@@ -5,17 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inicio - Colombia Reals</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css">
     <script>
         tailwind.config = {
             theme: {
                 extend: {
-                    colors: {
-                        dorado: '#F5C518',
-                        discord: '#5865F2',
-                        oscuro: '#0F0F0F',
-                        grisoscuro: '#1A1A1A'
-                    },
+                    colors: { dorado: '#F5C518', azul: '#2563EB', rojo: '#CE1126', discord: '#5865F2' },
                     fontFamily: { sans: ['Segoe UI', 'Roboto', 'sans-serif'] }
                 }
             }
@@ -23,161 +18,96 @@
     </script>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { margin: 0; font-family: 'Segoe UI', sans-serif; color: white; }
+        body { font-family: 'Segoe UI', sans-serif; color: white; display: none; }
 
-        /* FONDO NUEVO */
-        .hero {
-            min-height: 100vh;
-            width: 100%;
+        .seccion-inicio {
+            min-height: 100vh; width: 100%;
             background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.8)),
-                        url('https://cdn.discordapp.com/attachments/1515011245538021390/1522656555760357386/file_000000007e0071f58a8cf07bc6c63599.png?ex=6a4943ec&is=6a47f26c&hm=5ef321e63c7e586e0882001e715a58ecb5b8c54c183268663648a1bb284b824d&') center/cover no-repeat fixed;
+            url('https://cdn.discordapp.com/attachments/1515011245538021390/1522656555760357386/file_000000007e0071f58a8cf07bc6c63599.png?ex=6a4943ec&is=6a47f26c&hm=5ef321e63c7e586e0882001e715a58ecb5b8c54c183268663648a1bb284b824d&') center/cover no-repeat fixed;
             display: flex; flex-direction: column; align-items: center; justify-content: center;
-            text-align: center; padding: 20px; padding-top: 120px;
+            text-align: center; padding: 20px; padding-top: 90px;
         }
 
-        /* LOGO GRANDE CON ANIMACIÓN */
         @keyframes flotar {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-12px); }
-            100% { transform: translateY(0px); }
+            0% { transform: translateY(0px); } 33% { transform: translateY(-12px); }
+            66% { transform: translateY(5px); } 100% { transform: translateY(0px); }
         }
-        .logo-principal {
-            max-width: 420px;
-            width: 90%;
-            margin-bottom: 25px;
-            border-radius: 12px;
-            animation: flotar 4s ease-in-out infinite;
-            filter: drop-shadow(0 0 25px rgba(245,197,24,0.5));
-        }
+        .logo-principal { max-width: 420px; width: 90%; margin-bottom: 25px; border-radius: 12px; animation: flotar 4.5s infinite ease-in-out; filter: drop-shadow(0 0 30px rgba(245,197,24,0.5)); }
 
-        .logo-flotante { position: fixed; top: 20px; left: 20px; z-index: 999; }
-        .logo-flotante img { width: 60px; border-radius: 8px; }
+        .barra-arriba { position: fixed; top:15px; right:15px; z-index:999; }
+        .caja-usuario { display: flex; align-items: center; gap:8px; background: rgba(37,99,235,0.2); border:2px solid #2563EB; padding:8px 16px; border-radius:20px; font-weight:bold; color:#93C5FD; font-size:15px; }
+        .btn-cerrar { background:none; border:none; color:#F87171; font-size:18px; cursor:pointer; padding:0 5px; }
 
-        .nav-bar {
-            position: fixed; top: 0; left: 0; width: 100%; padding: 15px 25px;
-            display: flex; justify-content: space-between; align-items: center;
-            background: linear-gradient(to bottom, rgba(0,0,0,0.8), transparent); z-index: 998;
-        }
-        .nav-links { display: none; }
+        .titulo { font-size:38px; margin-bottom:12px; text-shadow:0 0 12px rgba(0,0,0,0.8); }
+        .subtitulo { font-size:17px; color:#E5E7EB; margin-bottom:35px; }
 
-        .usuario-barra {
-            display: flex; align-items: center; gap: 8px;
-            background: rgba(37,99,235,0.2); border: 2px solid #2563EB;
-            padding: 7px 14px; border-radius: 20px; font-weight: bold; color: #93C5FD;
-            font-size: 14px;
-        }
-        .btn-nav {
-            background: #2563EB; color: white; padding: 8px 16px; border-radius: 8px;
-            font-weight: bold; text-decoration: none; transition: 0.3s;
-        }
-        .btn-nav:hover { background: #1D4ED8; }
+        .grupo-botones { display:flex; flex-wrap:wrap; gap:14px; justify-content:center; margin-bottom:40px; }
+        .boton { padding:15px 26px; border:none; border-radius:10px; font-size:16px; font-weight:bold; color:white; text-decoration:none; display:flex; align-items:center; gap:8px; cursor:pointer; transition:0.3s; }
+        .boton:hover { transform:translateY(-3px); }
+        .boton-discord { background:#5865F2; }
+        .boton-ip { background:#F5C518; color:black; }
+        .boton-sanciones { background:#CE1126; }
 
-        .titulo { font-size: 36px; margin-bottom: 10px; text-shadow: 0 0 10px rgba(0,0,0,0.8); }
-        .subtitulo { font-size: 16px; color: #DDD; margin-bottom: 30px; }
+        .grupo-categorias { display:grid; grid-template-columns:repeat(auto-fit, minmax(200px,1fr)); gap:12px; max-width:750px; width:100%; padding:0 10px; }
+        .boton-cat { padding:14px; background:rgba(26,26,26,0.75); border:2px solid #4B5563; border-radius:8px; color:white; font-weight:600; text-decoration:none; transition:0.3s; text-align:center; }
+        .boton-cat:hover { border-color:#F5C518; }
 
-        .botones { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; margin-bottom: 35px; }
-        .btn {
-            padding: 13px 24px; border: none; border-radius: 10px; font-size: 15px; font-weight: bold;
-            text-decoration: none; color: white; display: flex; align-items: center; gap: 7px; transition: 0.3s;
-        }
-        .btn:hover { transform: translateY(-3px); }
-        .btn-discord { background: #5865F2; }
-        .btn-ip { background: #F5C518; color: black; }
-        .btn-sanciones { background: #CE1126; }
-        .btn-login { background: #2563EB; }
+        .aviso { position:fixed; bottom:25px; left:50%; transform:translateX(-50%); background:#10B981; color:black; padding:12px 22px; border-radius:8px; font-weight:bold; opacity:0; transition:0.3s; z-index:1000; }
+        .aviso.visible { opacity:1; }
 
-        .categorias {
-            display: grid; grid-template-columns: repeat(2, 1fr);
-            gap: 10px; max-width: 700px; width: 100%; padding: 0 10px;
-        }
-        .btn-cat {
-            padding: 12px; background: rgba(26,26,26,0.8); border: 2px solid #444; border-radius: 8px;
-            color: white; font-weight: 600; text-decoration: none; transition: 0.3s; font-size: 14px;
-        }
-        .btn-cat:hover { border-color: #F5C518; }
-
-        .alerta {
-            position: fixed; bottom: 25px; left: 50%; transform: translateX(-50%);
-            background: #10B981; color: black; padding: 10px 20px; border-radius: 8px; font-weight: bold;
-            opacity: 0; transition: opacity 0.3s; z-index: 1000; font-size: 14px;
-        }
-        .alerta.mostrar { opacity: 1; }
-
-        .cerrar-btn { background: none; border: none; color: #F87171; font-size: 18px; cursor: pointer; padding: 0 5px; }
+        @media (max-width:480px) { .titulo { font-size:28px; } }
     </style>
 </head>
 <body>
-    <!-- TU LOGO -->
-    <div class="logo-flotante">
-        <img src="https://cdn.discordapp.com/attachments/1488264409825542277/1516009727480561836/Picsart_26-05-25_17-31-56-817.png?ex=6a48d095&is=6a477f15&hm=e1b8c2549fe60a5e07b7b9cc51c57123de59401e39c80af75db1155d99ddc11e&" alt="Colombia Reals">
+
+    <div class="barra-arriba">
+        <div id="zona-usuario"></div>
     </div>
 
-    <nav class="nav-bar">
-        <div class="nav-links"></div>
-        <div id="zona-usuario">
-            <a href="login.html" class="btn-nav">INICIAR SESIÓN</a>
-        </div>
-    </nav>
-
-    <section class="hero">
+    <section class="seccion-inicio">
         <img src="https://cdn.discordapp.com/attachments/1488264409825542277/1516009727480561836/Picsart_26-05-25_17-31-56-817.png?ex=6a48d095&is=6a477f15&hm=e1b8c2549fe60a5e07b7b9cc51c57123de59401e39c80af75db1155d99ddc11e&" alt="Colombia Reals" class="logo-principal">
-        
-        <h1 class="titulo">COLOMBIA REALS</h1>
-        <p class="subtitulo">Servidor de Roleplay 100% Colombiano</p>
+        <h1 class="titulo">COLOMBIA REALS ROLEPLAY</h1>
+        <p class="subtitulo">El mejor servidor 100% colombiano de SA-MP</p>
 
-        <div class="botones">
-            <a href="https://discord.gg/REsXTSrvCa" target="_blank" class="btn btn-discord">
-                <i class="fa fa-discord"></i> DISCORD
-            </a>
-            <button onclick="copiarIP()" class="btn btn-ip">
-                <i class="fa fa-copy"></i> COPIAR IP
-            </button>
-            <a href="sanciones.html" target="_blank" class="btn btn-sanciones">
-                <i class="fa fa-exclamation-triangle"></i> SANCIONES
-            </a>
-            <a href="login.html" target="_blank" class="btn btn-login">
-                <i class="fa fa-user"></i> INGRESAR
-            </a>
+        <div class="grupo-botones">
+            <a href="https://discord.gg/REsXTSrvCa" target="_blank" class="boton boton-discord"><i class="fa fa-discord"></i> DISCORD</a>
+            <button onclick="copiarIP()" class="boton boton-ip"><i class="fa fa-copy"></i> COPIAR IP</button>
+            <a href="sanciones.html" target="_blank" class="boton boton-sanciones"><i class="fa fa-exclamation-triangle"></i> SANCIONES</a>
         </div>
 
-        <div class="categorias">
-            <a href="informacion.html" target="_blank" class="btn-cat">¿POR QUÉ ELEGIRNOS?</a>
-            <a href="discords.html" target="_blank" class="btn-cat">DISCORDS OFICIALES</a>
-            <a href="sanciones.html#rol" target="_blank" class="btn-cat">SANCIONES DE ROL</a>
-            <a href="sanciones.html#ban" target="_blank" class="btn-cat">BAN PERMANENTE</a>
+        <div class="grupo-categorias">
+            <a href="informacion.html" class="boton-cat">¿POR QUÉ ELEGIRNOS?</a>
+            <a href="discords.html" class="boton-cat">DISCORDS OFICIALES</a>
+            <a href="sanciones.html#rol" class="boton-cat">SANCIONES DE ROL</a>
+            <a href="sanciones.html#ban" class="boton-cat">BAN PERMANENTE</a>
         </div>
     </section>
 
-    <div class="alerta" id="alerta">✅ IP copiada!</div>
+    <div id="aviso" class="aviso">✅ IP copiada!</div>
 
     <script>
-        function copiarIP() {
-            navigator.clipboard.writeText("172.83.152.206:9999").then(() => {
-                const alerta = document.getElementById('alerta');
-                alerta.classList.add('mostrar');
-                setTimeout(() => alerta.classList.remove('mostrar'), 2500);
-            });
-        }
-
-        // MOSTRAR USUARIO GUARDADO
+        // 🛡️ PROTECCIÓN: SI NO INICIÓ SESIÓN, LO MANDA AL LOGIN
         window.addEventListener('load', () => {
-            const nombre = localStorage.getItem('nombreIC');
-            const zona = document.getElementById('zona-usuario');
-            if(nombre) {
-                zona.innerHTML = `
-                    <div class="usuario-barra">
-                        <i class="fa fa-user-circle"></i> ${nombre}
-                        <button onclick="cerrarSesion()" class="cerrar-btn">✕</button>
-                    </div>
+            const usuario = localStorage.getItem('nombreIC');
+            if(!usuario) {
+                window.location.href = 'login.html';
+            } else {
+                document.body.style.display = 'block';
+                document.getElementById('zona-usuario').innerHTML = `
+                    <div class="caja-usuario"><i class="fa fa-user-circle"></i> ${usuario}
+                    <button onclick="cerrar()" class="btn-cerrar">✕</button></div>
                 `;
             }
         });
 
-        function cerrarSesion() {
-            localStorage.clear();
-            location.reload();
+        function cerrar() { localStorage.clear(); location.reload(); }
+        function copiarIP() {
+            navigator.clipboard.writeText("172.83.152.206:9999").then(()=>{
+                const aviso = document.getElementById('aviso');
+                aviso.classList.add('visible');
+                setTimeout(()=> aviso.classList.remove('visible'), 2500);
+            });
         }
     </script>
 </body>
 </html>
-
