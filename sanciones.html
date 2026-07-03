@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sanciones - Colombia Reals</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css">
+    <script>
+        // PROTECCIÓN
+        window.addEventListener('load', () => {
+            if(!localStorage.getItem('nombreIC')) {
+                window.location.replace('login.html');
+            }
+        });
+    </script>
+    <style>
+        *{margin:0;padding:0;box-sizing:border-box;}
+        body{min-height:100vh;background:linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0.9)),url('https://cdn.discordapp.com/attachments/1515011245538021390/1522656555760357386/file_000000007e0071f58a8cf07bc6c63599.png?ex=6a4943ec&is=6a47f26c&hm=5ef321e63c7e586e0882001e715a58ecb5b8c54c183268663648a1bb284b824d&') center/cover no-repeat fixed;color:white;font-family:Segoe UI,sans-serif;padding:20px;}
+        .contenedor{max-width:900px;margin:0 auto;}
+        .volver{display:inline-flex;align-items:center;gap:8px;color:#93C5FD;text-decoration:none;margin-bottom:25px;font-weight:bold;}
+        .volver:hover{color:#F5C518;}
+        h1{color:#F5C518;margin-bottom:30px;text-align:center;}
+        .seccion{background:rgba(17,24,39,0.9);border-radius:12px;padding:20px;margin-bottom:20px;border:1px solid #374151;}
+        h2{color:#CE1126;margin-bottom:15px;}
+    </style>
+</head>
+<body>
+    <div class="contenedor">
+        <a href="index.html" class="volver"><i class="fa fa-arrow-left"></i> Volver al inicio</a>
+        <h1>📋 SANCIONES DEL SERVIDOR</h1>
+
+        <div id="rol" class="seccion">
+            <h2>⚖️ Sanciones de Rol</h2>
+            <p>Aquí irán las reglas y sanciones por incumplimiento de rol.</p>
+        </div>
+
+        <div id="ban" class="seccion">
+            <h2>🚫 Baneos Permanentes</h2>
+            <p>Aquí irán las causas de baneo definitivo.</p>
+        </div>
+    </div>
+</body>
+</html>
+
