@@ -32,11 +32,9 @@
     <div class="logo-flotante">
         <img src="https://cdn.discordapp.com/attachments/1488264409825542277/1516009727480561836/Picsart_26-05-25_17-31-56-817.png?ex=6a48d095&is=6a477f15&hm=e1b8c2549fe60a5e07b7b9cc51c57123de59401e39c80af75db1155d99ddc11e&" alt="Colombia Reals">
     </div>
-
     <div class="contenedor">
         <a href="index.html" class="volver"><i class="fa fa-arrow-left"></i> Volver al inicio</a>
         <h1>📋 ESCALA COMPLETA DE SANCIONES</h1>
-
         <div id="rol" class="seccion">
             <h2>⚖️ SANCIONES DE ROL</h2>
             <ul>
@@ -54,7 +52,6 @@
                 <li>• Evasión de Rol: Jail 60 Minutos</li>
             </ul>
         </div>
-
         <div id="chat" class="seccion">
             <h2>💬 SANCIONES DE CHAT</h2>
             <ul>
@@ -65,7 +62,6 @@
                 <li>• Faltas de respeto: Mute 30 Minutos</li>
             </ul>
         </div>
-
         <div id="ban" class="seccion">
             <h2>🚫 BAN PERMANENTE</h2>
             <ul>
@@ -78,5 +74,35 @@
             </ul>
         </div>
     </div>
+
+    <!-- REPRODUCTOR CON CONTINUIDAD -->
+    <div style="position:fixed;bottom:0;left:0;width:1px;height:1px;opacity:0;pointer-events:none;overflow:hidden;z-index:-1;">
+        <iframe id="musica" width="1" height="1" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+    </div>
+    <script>
+        const canciones = [
+            "https://www.youtube.com/embed/qrTz4OEMk_0?si=8RyOx-PKC4GOfQV7&autoplay=1&mute=0&loop=0&playlist=qrTz4OEMk_0",
+            "https://www.youtube.com/embed/h269QbGCvPs?si=YupAsbabxcT1aI1t&autoplay=1&mute=0&loop=0&playlist=h269QbGCvPs",
+            "https://www.youtube.com/embed/7bQcByZicWw?si=px82ifDxXfADJSgY&autoplay=1&mute=0&loop=0&playlist=7bQcByZicWw",
+            "https://www.youtube.com/embed/siFCXKOQoXI?si=ysiJvczcHK9OUwV8&autoplay=1&mute=0&loop=0&playlist=siFCXKOQoXI",
+            "https://www.youtube.com/embed/0iklBbU6FXI?si=TveBCZOO_BoggBcr&autoplay=1&mute=0&loop=0&playlist=0iklBbU6FXI",
+            "https://www.youtube.com/embed/IT5RmPy0Tf4?si=UePtmHhUPDIsV41X&autoplay=1&mute=0&loop=0&playlist=IT5RmPy0Tf4",
+            "https://www.youtube.com/embed/aQnsbFtUHG4?si=lFOO4lpLyopQb2Jg&autoplay=1&mute=0&loop=0&playlist=aQnsbFtUHG4",
+            "https://www.youtube.com/embed/ZFww08Dc4ws?si=DpZqpgNd3opY5qZW&autoplay=1&mute=0&loop=0&playlist=ZFww08Dc4ws",
+            "https://www.youtube.com/embed/zkqfSHb1A_k?si=JPPK_tAlL2rkaTYM&autoplay=1&mute=0&loop=0&playlist=zkqfSHb1A_k",
+            "https://www.youtube.com/embed/ekFwDO6xOn0?si=N_eJzawQ-3NEPPTU&autoplay=1&mute=0&loop=0&playlist=ekFwDO6xOn0",
+            "https://www.youtube.com/embed/mzBg_Ln8j2U?si=prFIf4poOEkX-1VP&autoplay=1&mute=0&loop=0&playlist=mzBg_Ln8j2U",
+            "https://www.youtube.com/embed/NVLgkXylEuQ?si=jFhgSpbffXkpqbwu&autoplay=1&mute=0&loop=0&playlist=NVLgkXylEuQ",
+            "https://www.youtube.com/embed/TqsETF0P_Dw?si=6UP2kqBN7IHwMN-g&autoplay=1&mute=0&loop=0&playlist=TqsETF0P_Dw"
+        ];
+        let indiceActual = parseInt(localStorage.getItem('indiceCancion') || Math.floor(Math.random() * canciones.length));
+        document.getElementById('musica').src = canciones[indiceActual];
+        localStorage.setItem('indiceCancion', indiceActual);
+        setInterval(() => {
+            indiceActual = (indiceActual + 1) % canciones.length;
+            localStorage.setItem('indiceCancion', indiceActual);
+            document.getElementById('musica').src = canciones[indiceActual];
+        }, 180000);
+    </script>
 </body>
 </html>
