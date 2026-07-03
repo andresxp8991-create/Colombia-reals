@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Colombia Reals - SA-MP Roleplay</title>
+    <title>Inicio - Colombia Reals</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <script>
@@ -13,406 +13,122 @@
                     colors: {
                         dorado: '#F5C518',
                         discord: '#5865F2',
-                        verde: '#10B981',
                         oscuro: '#0F0F0F',
                         grisoscuro: '#1A1A1A',
                     },
-                    fontFamily: {
-                        sans: ['Segoe UI', 'Roboto', 'sans-serif'],
-                    },
+                    fontFamily: { sans: ['Segoe UI', 'Roboto', 'sans-serif'] }
                 }
             }
         }
     </script>
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
-        body { background-color: #0F0F0F; color: white; font-family: 'Segoe UI', sans-serif; }
-
-        /* Logo flotante */
-        .logo-flotante {
-            position: fixed;
-            top: 20px;
-            left: 20px;
-            z-index: 999;
-            transition: all 0.3s ease;
-        }
-        .logo-flotante img { width: 65px; height: auto; border-radius: 8px; }
-
-        /* Barra de navegación */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background: #0F0F0F; color: white; font-family: 'Segoe UI', sans-serif; }
+        .logo-flotante { position: fixed; top: 20px; left: 20px; z-index: 999; }
+        .logo-flotante img { width: 65px; border-radius: 8px; }
         .nav-bar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            padding: 15px 40px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            z-index: 998;
-            background: linear-gradient(to bottom, rgba(0,0,0,0.8), transparent);
+            position: fixed; top: 0; left: 0; width: 100%; padding: 15px 40px;
+            display: flex; justify-content: space-between; align-items: center;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.8), transparent); z-index: 998;
         }
-        .nav-links { display: flex; gap: 30px; list-style: none; margin-left: 100px; }
-        .nav-links a { color: #AAA; text-decoration: none; font-weight: 600; transition: color 0.3s; }
-        .nav-links a:hover, .nav-links a.active { color: white; border-bottom: 2px solid #F5C518; padding-bottom: 5px; }
-        .btn-discord-nav {
-            background: transparent; border: 2px solid #F5C518; color: #F5C518; padding: 8px 20px; border-radius: 6px;
-            font-weight: bold; cursor: pointer; transition: all 0.3s;
-        }
-        .btn-discord-nav:hover { background: #F5C518; color: black; }
-
-        /* Sección Principal */
+        .nav-links { display: flex; gap: 25px; list-style: none; margin-left: 100px; }
+        .nav-links a { color: #AAA; text-decoration: none; font-weight: 600; transition: 0.3s; }
+        .nav-links a:hover { color: #F5C518; border-bottom: 2px solid #F5C518; padding-bottom: 5px; }
+        .btn-nav { border: 2px solid #F5C518; color: #F5C518; padding: 8px 18px; border-radius: 6px; font-weight: bold; text-decoration: none; transition: 0.3s; }
+        .btn-nav:hover { background: #F5C518; color: black; }
         .hero {
-            width: 100%; min-height: 100vh;
-            background: linear-gradient(to bottom, rgba(0,0,0,0.5), #0F0F0F);
-            display: flex; flex-direction: column; align-items: center; justify-content: center;
+            min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center;
             text-align: center; padding: 20px; padding-top: 120px;
         }
-
-        /* LOGO PRINCIPAL */
-        .logo-principal {
-            max-width: 320px;
-            width: 80%;
-            margin-bottom: 15px;
-        }
-
-        .nombre-servidor {
-            font-size: 42px;
-            color: #FFFFFF;
-            text-shadow: 
-                -3px -3px 0 #000,  
-                3px -3px 0 #000,
-                -3px 3px 0 #000,
-                3px 3px 0 #000;
-            letter-spacing: 5px;
-            margin-bottom: 30px;
-        }
-
-        /* BOTONES PRINCIPALES */
-        .botones-hero { display: flex; flex-wrap: wrap; gap: 15px; justify-content: center; margin-bottom: 40px; }
+        .logo-principal { max-width: 300px; width: 80%; margin-bottom: 20px; border-radius: 12px; }
+        .titulo { font-size: 42px; margin-bottom: 15px; text-shadow: 0 0 10px rgba(0,0,0,0.8); }
+        .subtitulo { font-size: 18px; color: #DDD; margin-bottom: 35px; }
+        .botones { display: flex; flex-wrap: wrap; gap: 15px; justify-content: center; margin-bottom: 40px; }
         .btn {
             padding: 14px 28px; border: none; border-radius: 10px; font-size: 16px; font-weight: bold;
-            cursor: pointer; transition: all 0.3s; display: flex; align-items: center; gap: 8px; text-decoration: none;
+            text-decoration: none; color: white; display: flex; align-items: center; gap: 8px; transition: 0.3s;
         }
         .btn:hover { transform: translateY(-3px); box-shadow: 0 8px 20px rgba(0,0,0,0.4); }
-        .btn-discord { background: #5865F2; color: white; }
+        .btn-discord { background: #5865F2; }
         .btn-ip { background: #F5C518; color: black; }
-        .btn-sanciones { background: #CE1126; color: white; }
-        .desplazar { font-size: 14px; color: #888; animation: parpadeo 2s infinite; margin-top:20px; }
-        @keyframes parpadeo { 0%,100% { opacity: 1; } 50% { opacity: 0.4; } }
-
-        /* BOTONES DE CATEGORÍAS */
-        .botones-categorias {
+        .btn-sanciones { background: #CE1126; }
+        .btn-info { background: #10B981; }
+        .categorias {
             display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 12px; max-width: 900px; margin: 30px auto; padding: 0 20px;
+            gap: 12px; max-width: 900px; width: 100%; padding: 0 20px;
         }
-        .btn-categoria {
-            padding: 12px 20px; background: #1A1A1A; border: 2px solid #333; border-radius: 8px;
-            color: white; font-weight: 600; text-decoration: none; text-align: center;
-            transition: all 0.3s;
+        .btn-cat {
+            padding: 12px; background: #1A1A1A; border: 2px solid #333; border-radius: 8px;
+            color: white; font-weight: 600; text-decoration: none; transition: 0.3s;
         }
-        .btn-categoria:hover {
-            border-color: #F5C518; background: rgba(245, 197, 24, 0.1); transform: translateY(-2px);
-        }
-
-        /* NUEVO APARTADO: DISCORDS OFICIALES */
-        .discords-oficiales {
-            max-width: 900px; margin: 80px auto; padding: 0 20px;
-        }
-        .discords-contenedor {
-            background: #1A1A1A; border: 1px solid #333; border-radius: 12px; padding: 35px;
-        }
-        .titulo-discords {
-            font-size: 28px; font-weight: 900; color: #5865F2; text-align: center; margin-bottom: 30px;
-            padding-bottom: 15px; border-bottom: 2px solid #5865F2;
-        }
-        .lista-discords {
-            display: flex; flex-direction: column; gap: 15px;
-        }
-        .btn-discord-faccion {
-            padding: 16px 25px; background: rgba(88, 101, 242, 0.1); border: 2px solid #5865F2; border-radius: 10px;
-            color: white; font-size: 17px; font-weight: 600; text-decoration: none;
-            display: flex; align-items: center; gap: 12px; transition: all 0.3s;
-        }
-        .btn-discord-faccion:hover {
-            background: #5865F2; transform: translateX(5px);
-        }
-        .btn-discord-faccion i { font-size: 22px; }
-
-        /* Sección características */
-        .caracteristicas { padding: 60px 20px; max-width: 1200px; margin: 0 auto; }
-        .titulo-seccion { text-align: center; font-size: 32px; font-weight: 800; margin-bottom: 50px; }
-        .grid-caracteristicas { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
-        .tarjeta {
-            background: #1A1A1A; border: 1px solid #333; border-radius: 10px; padding: 25px; text-align: center;
-            transition: all 0.3s;
-        }
-        .tarjeta:hover { border-color: #F5C518; transform: translateY(-5px); }
-        .tarjeta i { font-size: 36px; color: #F5C518; margin-bottom: 15px; }
-        .tarjeta h3 { font-size: 16px; font-weight: 700; margin-bottom: 10px; }
-        .tarjeta p { font-size: 13px; color: #AAA; line-height: 1.5; }
-
-        /* ESCALA DE SANCIONES */
-        .sanciones {
-            max-width: 900px; margin: 80px auto; padding: 0 20px;
-        }
-        .sanciones-contenedor {
-            background: #1A1A1A; border: 1px solid #333; border-radius: 12px; padding: 35px;
-        }
-        .titulo-sanciones {
-            font-size: 28px; font-weight: 900; color: #F5C518; text-align: center; margin-bottom: 25px;
-            padding-bottom: 15px; border-bottom: 2px solid #F5C518;
-        }
-        .linea-separadora {
-            text-align: center; color: #555; margin: 20px 0; font-size: 16px; letter-spacing: 3px;
-        }
-        .grupo-sanciones { margin-bottom: 25px; scroll-margin-top: 100px; }
-        .grupo-sanciones h4 {
-            font-size: 18px; font-weight: bold; color: #FFD700; margin-bottom: 12px;
-            padding-top:15px; border-top:1px solid #333; padding-left:10px;
-        }
-        .grupo-sanciones:first-child h4 { border-top:none; padding-top:0; }
-        .grupo-sanciones ul { list-style: none; padding-left: 0; }
-        .grupo-sanciones li {
-            font-size: 15px; color: #DDD; padding: 6px 0; line-height: 1.6;
-            border-bottom: 1px solid #2A2A2A;
-        }
-        .grupo-sanciones li:last-child { border-bottom: none; }
-        .grupo-sanciones li strong { color: #FFF; }
-
-        /* Pie de página */
-        .footer {
-            background: #0A0A0A; padding: 50px 20px 30px; border-top: 1px solid #222;
-            display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 30px;
-            max-width: 1200px; margin: 0 auto;
-        }
-        .footer-logo { width: 120px; margin-bottom: 15px; border-radius: 8px; }
-        .footer h4 { font-size: 16px; font-weight: 700; margin-bottom: 15px; color: #F5C518; }
-        .footer ul { list-style: none; }
-        .footer ul li { margin-bottom: 8px; }
-        .footer ul li a { color: #AAA; text-decoration: none; font-size: 14px; transition: color 0.3s; }
-        .footer ul li a:hover { color: #F5C518; }
-        .copyright { text-align: center; padding-top: 30px; color: #666; font-size: 13px; border-top: 1px solid #222; margin-top: 30px; }
-
-        /* Alerta copiado */
+        .btn-cat:hover { border-color: #F5C518; background: rgba(245,197,24,0.1); transform: translateY(-2px); }
         .alerta {
             position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%);
             background: #10B981; color: black; padding: 12px 25px; border-radius: 8px; font-weight: bold;
-            opacity: 0; transition: opacity 0.3s; z-index: 1000;
+            opacity: 0; transition: 0.3s; z-index: 1000;
         }
         .alerta.mostrar { opacity: 1; }
-
-        /* Adaptar a móviles */
+        .footer {
+            background: #0A0A0A; padding: 40px 20px; border-top: 1px solid #222; margin-top: 60px;
+            text-align: center; color: #777; font-size: 14px;
+        }
         @media (max-width: 768px) {
-            .nav-bar { padding: 15px 20px; }
             .nav-links { display: none; }
-            .logo-principal { max-width: 220px; }
-            .nombre-servidor { font-size: 28px; }
-            .botones-hero { flex-direction: column; width: 90%; }
-            .botones-categorias { grid-template-columns: 1fr; }
-            .discords-contenedor { padding: 20px; }
-            .btn-discord-faccion { font-size: 15px; padding: 12px 18px; }
-            .sanciones-contenedor { padding: 20px; }
-            .titulo-sanciones { font-size: 22px; }
-            .grupo-sanciones li { font-size: 14px; }
+            .titulo { font-size: 28px; }
+            .botones { flex-direction: column; width: 90%; }
         }
     </style>
 </head>
 <body>
-
-    <!-- Logo flotante -->
     <div class="logo-flotante">
-        <img src="https://i.imgur.com/8ZkXzLq.png" alt="Colombia Reals">
+        <img src="https://cdn.discordapp.com/attachments/1488264409825542277/1516009727480561836/Picsart_26-05-25_17-31-56-817.png?ex=6a48d095&is=6a477f15&hm=e1b8c2549fe60a5e07b7b9cc51c57123de59401e39c80af75db1155d99ddc11e&" alt="Colombia Reals">
     </div>
 
-    <!-- Navegación -->
     <nav class="nav-bar">
         <ul class="nav-links">
-            <li><a href="#" class="active">INICIO</a></li>
-            <li><a href="#caracteristicas">CARACTERÍSTICAS</a></li>
-            <li><a href="#discords">DISCORDS</a></li>
-            <li><a href="#sanciones">SANCIONES</a></li>
-            <li><a href="#rol">DE ROL</a></li>
-            <li><a href="#chat">DE CHAT</a></li>
-            <li><a href="#ban">BAN</a></li>
+            <li><a href="index.html">INICIO</a></li>
+            <li><a href="informacion.html">INFORMACIÓN</a></li>
+            <li><a href="discords.html">DISCORDS</a></li>
+            <li><a href="sanciones.html">SANCIONES</a></li>
         </ul>
-        <a href="https://discord.gg/REsXTSrvCa" target="_blank" class="btn-discord-nav">
-            <i class="fa fa-discord"></i> DISCORD
-        </a>
+        <a href="https://discord.gg/REsXTSrvCa" target="_blank" class="btn-nav">DISCORD</a>
     </nav>
 
-    <!-- Sección Principal -->
     <section class="hero">
-        <img src="https://i.imgur.com/8ZkXzLq.png" alt="Colombia Reals Roleplay" class="logo-principal">
-        <h1 class="nombre-servidor">COLOMBIA REALS</h1>
-        <p style="font-size:18px; color:#DDD; margin-bottom:25px;">El mejor servidor de Roleplay 100% Colombiano</p>
+        <img src="https://cdn.discordapp.com/attachments/1488264409825542277/1516009727480561836/Picsart_26-05-25_17-31-56-817.png?ex=6a48d095&is=6a477f15&hm=e1b8c2549fe60a5e07b7b9cc51c57123de59401e39c80af75db1155d99ddc11e&" alt="Colombia Reals" class="logo-principal">
+        <h1 class="titulo">COLOMBIA REALS ROLEPLAY</h1>
+        <p class="subtitulo">El mejor servidor 100% colombiano de SA-MP</p>
 
-        <div class="botones-hero">
+        <div class="botones">
             <a href="https://discord.gg/REsXTSrvCa" target="_blank" class="btn btn-discord">
                 <i class="fa fa-discord"></i> DISCORD OFICIAL
             </a>
             <button onclick="copiarIP()" class="btn btn-ip">
                 <i class="fa fa-copy"></i> COPIAR IP
             </button>
-            <a href="#sanciones" class="btn btn-sanciones">
+            <a href="sanciones.html" target="_blank" class="btn btn-sanciones">
                 <i class="fa fa-exclamation-triangle"></i> VER SANCIONES
+            </a>
+            <a href="informacion.html" target="_blank" class="btn btn-info">
+                <i class="fa fa-info-circle"></i> CONOCER MÁS
             </a>
         </div>
 
-        <div class="botones-categorias">
-            <a href="#caracteristicas" class="btn-categoria">¿POR QUÉ ELEGIRNOS?</a>
-            <a href="#discords" class="btn-categoria">🎮 DISCORDS OFICIALES</a>
-            <a href="#rol" class="btn-categoria">📌 SANCIONES DE ROL</a>
-            <a href="#chat" class="btn-categoria">💬 SANCIONES DE CHAT</a>
-            <a href="#ban" class="btn-categoria">🚫 BAN PERMANENTE</a>
-        </div>
-
-        <div class="desplazar">
-            <i class="fa fa-angle-down"></i> DESLIZA PARA VER MÁS
+        <div class="categorias">
+            <a href="informacion.html" target="_blank" class="btn-cat">¿POR QUÉ ELEGIRNOS?</a>
+            <a href="discords.html" target="_blank" class="btn-cat">🎮 DISCORDS OFICIALES</a>
+            <a href="sanciones.html#rol" target="_blank" class="btn-cat">📌 SANCIONES DE ROL</a>
+            <a href="sanciones.html#chat" target="_blank" class="btn-cat">💬 SANCIONES DE CHAT</a>
+            <a href="sanciones.html#ban" target="_blank" class="btn-cat">🚫 BAN PERMANENTE</a>
         </div>
     </section>
 
-    <!-- Características -->
-    <section id="caracteristicas" class="caracteristicas">
-        <h2 class="titulo-seccion">¿POR QUÉ ELEGIR <span style="color:#F5C518">COLOMBIA REALS</span>?</h2>
-        <div class="grid-caracteristicas">
-            <div class="tarjeta">
-                <i class="fa fa-truck"></i>
-                <h3>EMPRESAS ÚNICAS</h3>
-                <p>Empresas de reparto, laboratorio, aerolíneas y muchas más.</p>
-            </div>
-            <div class="tarjeta">
-                <i class="fa fa-shopping-bag"></i>
-                <h3>100% COLOMBIANO</h3>
-                <p>Tiendas, gasolineras y todo inspirado en nuestro país.</p>
-            </div>
-            <div class="tarjeta">
-                <i class="fa fa-cogs"></i>
-                <h3>SISTEMAS NUEVOS</h3>
-                <p>Desarrollos exclusivos para el mejor rol.</p>
-            </div>
-            <div class="tarjeta">
-                <i class="fa fa-map-marker"></i>
-                <h3>MAPEOS COLOMBIANOS</h3>
-                <p>Diseños hechos a medida para Colombia Reals.</p>
-            </div>
-            <div class="tarjeta">
-                <i class="fa fa-users"></i>
-                <h3>FACCIONES</h3>
-                <p>Únete o crea tu propia organización.</p>
-            </div>
-            <div class="tarjeta">
-                <i class="fa fa-briefcase"></i>
-                <h3>TRABAJOS REALISTAS</h3>
-                <p>Oficios auténticos y propios de la región.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- ================== NUEVO APARTADO: DISCORDS OFICIALES ================== -->
-    <section id="discords" class="discords-oficiales">
-        <div class="discords-contenedor">
-            <h2 class="titulo-discords">🎮 DISCORDS OFICIALES</h2>
-            <div class="lista-discords">
-                <a href="https://discord.gg/REsXTSrvCa" target="_blank" class="btn-discord-faccion">
-                    <i class="fa fa-discord"></i> Discord Oficial del Servidor
-                </a>
-                <a href="https://discord.gg/JJqUZzePXk" target="_blank" class="btn-discord-faccion">
-                    <i class="fa fa-shield"></i> Discord Oficial de la Policía
-                </a>
-                <a href="https://discord.gg/tuxFkFP7Xt" target="_blank" class="btn-discord-faccion">
-                    <i class="fa fa-flag"></i> Discord Oficial del Ejército
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <!-- ESCALA DE SANCIONES -->
-    <section id="sanciones" class="sanciones">
-        <div class="sanciones-contenedor">
-            <h2 class="titulo-sanciones">⏳ ESCALA DE SANCIONES</h2>
-            <div class="linea-separadora">━━━━━━━━━━━━━━━━━━━━━━</div>
-
-            <div id="rol" class="grupo-sanciones">
-                <h4>📌 Sanciones de Rol</h4>
-                <ul>
-                    <li>📌 MG (Metagaming): Jail 30 Min.</li>
-                    <li>📌 PG (Powergaming): Jail 20 Min.</li>
-                    <li>📌 DM (Deathmatch): Jail 45 Min.</li>
-                    <li>📌 VDM (Vehicle Deathmatch): Jail 45 Min.</li>
-                    <li>📌 RK (Revenge Kill): Jail 45 Min.</li>
-                    <li>📌 NRA (No Rol de Arma): Jail 20 Min.</li>
-                    <li>📌 NRE (No Rol de Entorno): Jail 20 Min.</li>
-                    <li>📌 NVVPJ (No Valorar la Vida del Personaje): Jail 30 Min.</li>
-                    <li>📌 Fear RP: Jail 30 Min.</li>
-                    <li>📌 Fail RP: Jail 20 Min.</li>
-                    <li>📌 Bad Driving (BD): Jail 15 Min.</li>
-                    <li>📌 Cop Bait: Jail 20 Min.</li>
-                    <li>📌 Cop Fear: Jail 30 Min.</li>
-                    <li>📌 Forzar Rol: Jail 45 Min.</li>
-                    <li>📌 Combat Logging (CL): Jail 60 Min.</li>
-                    <li>📌 Evasión de Rol: Jail 60 Min.</li>
-                    <li>📌 Quit para evitar rol: Jail 60 Min.</li>
-                    <li>📌 Third Party (Intervenir en rol ajeno): Jail 30 Min.</li>
-                    <li>📌 Looting sin rol: Jail 30 Min.</li>
-                    <li>📌 No seguir PK: Jail 45 Min.</li>
-                    <li>📌 Conducción Off-Road irreal: Jail 20 Min.</li>
-                    <li>📌 Abuso de Zona Segura (SZ): Jail 45 Min.</li>
-                    <li>📌 Robar sin rol: Jail 25 Min.</li>
-                    <li>📌 Incumplir normas de robo o secuestro: Jail 25 Min.</li>
-                    <li>📌 Mentir al Staff: Jail 60 Min.</li>
-                </ul>
-            </div>
-
-            <div id="chat" class="grupo-sanciones">
-                <h4>💬 Sanciones de Chat</h4>
-                <ul>
-                    <li>💬 Spam/Flood: Mute 10 Min.</li>
-                    <li>💬 Insultos OOC: Mute 20 Min.</li>
-                    <li>💬 Abuso del chat OOC: Advertencia → Mute 15 Min.</li>
-                    <li>💬 Uso indebido de /me o /do: Advertencia → Jail 7 Min.</li>
-                    <li>💬 Mayúsculas excesivas (Caps): Advertencia.</li>
-                    <li>💬 Publicidad por chat: Mute 60 Min. o Ban (según el caso).</li>
-                    <li>💬 Toxicidad: Mute 30 Min.</li>
-                    <li>💬 Faltas de respeto al Staff: Mute 60 Min. o Jail 30 Min.</li>
-                </ul>
-            </div>
-
-            <div id="ban" class="grupo-sanciones">
-                <h4>🚫 Ban Permanente</h4>
-                <ul>
-                    <li>• Cheats/Hacks.</li>
-                    <li>• Venta de dinero o cuentas.</li>
-                    <li>• Suplantación de Staff.</li>
-                    <li>• Bug Abuse Grave.</li>
-                    <li>• Multicuentas para evadir sanciones.</li>
-                    <li>• Cualquier otra falta grave determinada por la Administración.</li>
-                </ul>
-            </div>
-        </div>
-    </section>
-
-    <!-- Pie de página -->
     <footer class="footer">
-        <div>
-            <img src="https://i.imgur.com/8ZkXzLq.png" alt="Colombia Reals" class="footer-logo">
-            <p style="font-size:14px; color:#AAA; margin-bottom:10px;">Servidor de Roleplay Colombiano</p>
-            <p style="font-weight:bold; color:#F5C518;">IP: 172.83.152.206:9999</p>
-        </div>
-        <div>
-            <h4>ENLACES</h4>
-            <ul>
-                <li><a href="#">Inicio</a></li>
-                <li><a href="#discords">Discords</a></li>
-                <li><a href="#sanciones">Sanciones</a></li>
-            </ul>
-        </div>
-        <div class="copyright">
-            © 2026 Colombia Reals Roleplay. Todos los derechos reservados.
-        </div>
+        <p>IP del servidor: 172.83.152.206:9999</p>
+        <p>© 2026 Colombia Reals. Todos los derechos reservados.</p>
     </footer>
 
     <div class="alerta" id="alerta">✅ IP copiada correctamente!</div>
-
     <script>
         function copiarIP() {
             navigator.clipboard.writeText("172.83.152.206:9999").then(() => {
@@ -421,10 +137,6 @@
                 setTimeout(() => a.classList.remove('mostrar'), 2500);
             });
         }
-        window.addEventListener('scroll', () => {
-            const l = document.querySelector('.logo-flotante img');
-            l.style.width = window.scrollY > 50 ? '50px' : '65px';
-        });
     </script>
 </body>
 </html>
