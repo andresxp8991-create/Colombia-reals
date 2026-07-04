@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZONA VIP - Colombia Reals</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css">
+    <script>
+        window.addEventListener('load', () => {
+            if(!localStorage.getItem('nombreIC')) window.location.replace('login.html');
+        });
+    </script>
+    <style>
+        *{margin:0;padding:0;box-sizing:border-box;}
+        body{min-height:100vh;background:linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0.9)),url('https://cdn.discordapp.com/attachments/1515011245538021390/1522667848269299782/file_000000007e0071f58a8cf07bc6c63599.png?ex=6a494e70&is=6a47fcf0&hm=27abdc961f5bdd428d1a88eef0c8a5adbb461fb600c2933deba79be7762bde44&') center/cover no-repeat fixed;color:white;font-family:Segoe UI,sans-serif;padding:20px;padding-top:90px;}
+        .logo-flotante{position:fixed;top:15px;left:15px;z-index:999;animation:flotar-logo 4s infinite ease-in-out;}
+        .logo-flotante img{width:65px;border-radius:8px;}
+        @keyframes flotar-logo{0%{transform:translateY(0);}50%{transform:translateY(-8px);}100%{transform:translateY(0);}}
+        .contenedor{max-width:1100px;margin:0 auto;}
+        .volver{color:#93C5FD;text-decoration:none;font-weight:bold;display:inline-flex;align-items:center;gap:8px;margin-bottom:25px;}
+        .volver:hover{color:#F5C518;}
+        h1{color:#F5C518;text-align:center;margin-bottom:40px;font-size:36px;filter:drop-shadow(0 0 15px rgba(245,197,24,0.5));}
+        .grid-vip{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:20px;}
+        .recuadro{background:rgba(17,24,39,0.9);border:2px solid #F5C518;border-radius:14px;padding:20px;text-align:center;transition:0.3s;}
+        .recuadro:hover{transform:translateY(-5px);box-shadow:0 0 20px rgba(245,197,24,0.3);}
+        .recuadro img{width:100%;height:200px;object-fit:cover;border-radius:10px;margin-bottom:15px;border:1px solid #444;}
+        .recuadro h3{color:#F5C518;margin-bottom:10px;font-size:20px;}
+        .recuadro p{color:#ddd;margin-bottom:10px;line-height:1.6;}
+        .precio{color:#10B981;font-weight:bold;font-size:18px;margin-bottom:15px;}
+        .btn-comprar{display:inline-flex;align-items:center;gap:8px;background:#10B981;color:white;padding:12px 24px;border-radius:8px;text-decoration:none;font-weight:bold;transition:0.3s;margin:5px;}
+        .btn-comprar:hover{background:#0d9269;transform:translateY(-2px);}
+        .btn-soporte{display:inline-flex;align-items:center;gap:8px;background:#5865F2;color:white;padding:12px 24px;border-radius:8px;text-decoration:none;font-weight:bold;transition:0.3s;margin:5px;}
+        .btn-soporte:hover{background:#4752C4;transform:translateY(-2px);}
+
+        /* MODAL GENERAL */
+        .modal{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.85);z-index:9999;align-items:center;justify-content:center;padding:20px;}
+        .modal-contenido{
+            background:rgba(17,24,39,0.95);
+            border:3px solid #F5C518;
+            border-radius:16px;
+            padding:30px;
+            max-width:500px;
+            width:100%;
+            text-align:center;
+            position:relative;
+            overflow:hidden;
+        }
+        .modal-contenido::before{
+            content:"";
+            position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+            width:280px;height:280px;
+            background:url('https://cdn.discordapp.com/attachments/1488264409825542277/1516009727480561836/Picsart_26-05-25_17-31-56-817.png?ex=6a497955&is=6a4827d5&hm=509cb61ced42994a68216a74bde1fc9aa164ef55bdd2268e48d355fed9f644c2&') center/contain no-repeat;
+            opacity:0.06;z-index:0;
+        }
+        .modal > *{position:relative;z-index:1;}
+        .cerrar-modal{background:#CE1126;border:none;color:white;padding:10px 25px;border-radius:8px;font-weight:bold;cursor:pointer;margin-bottom:20px;font-size:16px;}
+        .modal h2{color:#F5C518;margin-bottom:10px;font-size:24px;}
+        .modal .precio{color:#22E08A;font-size:28px;margin-bottom:25px;}
+        .botones-modal{display:flex;flex-direction:column;gap:12px;margin-top:10px;}
+
+        /* BOTONES DE PAGO */
+        .btn-pago{
+            display:flex;align-items:center;justify-content:center;gap:12px;
+            background:rgba(255,255,255,0.08);border:2px solid transparent;
+            padding:15px 20px;border-radius:12px;color:white;
+            font-weight:bold;font-size:17px;text-decoration:none;
+            transition:0.3s;
+        }
+        .btn-pago:hover{transform:translateY(-3px);border-color:#F5C518;box-shadow:0 0 15px rgba(245,197,24,0.3);}
+        .btn-pago i{font-size:24px;}
+        .paypal{color:#009cde;}
+        .nequi{color:#ff6b00;}
+        .daviplata{color:#ff0000;}
+        .bancolombia{color:#ffd100;}
+    </style>
+</head>
+<body>
+    <div class="logo-flotante">
+        <img src="https://cdn.discordapp.com/attachments/1488264409825542277/1516009727480561836/Picsart_26-05-25_17-31-56-817.png?ex=6a497955&is=6a4827d5&hm=509cb61ced42994a68216a74bde1fc9aa164ef55bdd2268e48d355fed9f644c2&" alt="Colombia Reals">
+    </div>
+
+    <div class="contenedor">
+        <a href="index.html" class="volver"><i class="fa fa-arrow-left"></i> Volver al inicio</a>
+        <h1>👑 ZONA VIP EXCLUSIVA</h1>
+
+        <div class="grid-vip">
+            <!-- ... TODOS LOS PRODUCTOS ANTERIORES SE MANTIENEN IGUALES ... -->
+            <!-- COMBO ADMIN -->
+            <div class="recuadro">
+                <img src="https://cdn.discordapp.com/attachments/1518992341417984152/1522774767743270982/file_000000004204720e945a7fbe8787a69c.png?ex=6a49b204&is=6a486084&hm=3186a604943885a98503b57c645951de6e307e3d50e499cd2ef3af2fd75b4d7a&" alt="Combo Admin">
+                <h3>COMBO ADMIN</h3>
+                <p>Acceso completo a funciones administrativas exclusivas</p>
+                <div class="precio">$ 70.000 COP</div>
+                <button onclick="abrirModalPrincipal('COMBO ADMIN','$ 70.000 COP')" class="btn-comprar"><i class="fa fa-shopping-cart"></i> ADQUIRIR</button>
+            </div>
+
+            <!-- COMBO LEGENDARIO -->
+            <div class="recuadro">
+                <img src="https://cdn.discordapp.com/attachments/1515153056097108102/1523097497596203121/file_00000000ea9871f5a6038b40b0cb0b22.png?ex=6a4ade95&is=6a498d15&hm=fb57de07e5c28a873399c3db24e7c040b55afca5fc1897d8382b85d23bd637d5&" alt="Combo Legendario">
+                <h3>COMBO LEGENDARIO</h3>
+                <p>Beneficios únicos, acceso a contenido exclusivo y prioridad en todo el servidor</p>
+                <div class="precio">$ Precio a definir</div>
+                <button onclick="abrirModalPrincipal('COMBO LEGENDARIO','$ Precio a definir')" class="btn-comprar"><i class="fa fa-shopping-cart"></i> ADQUIRIR</button>
+            </div>
+
+            <!-- COMBO TITÁN -->
+            <div class="recuadro">
+                <img src="https://cdn.discordapp.com/attachments/1515153056097108102/1523097480701411400/file_00000000e04871f5a0def96cd72ba69f.png?ex=6a4ade91&is=6a498d11&hm=39cf830bc66935ded8cffa0c61f3be02fdf52f15b6d142987fb0bf5f23b32162&" alt="Combo Titán">
+                <h3>COMBO TITÁN</h3>
+                <p>El paquete más completo: todos los beneficios anteriores + ventajas únicas sin límites</p>
+                <div class="precio">$ 85.000 COP</div>
+                <button onclick="abrirModalPrincipal('COMBO TITÁN','$ 85.000 COP')" class="btn-comprar"><i class="fa fa-shopping-cart"></i> ADQUIRIR</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL PRINCIPAL DEL PRODUCTO -->
+    <div id="modalPrincipal" class="modal">
+        <div class="modal-contenido">
+            <button class="cerrar-modal" onclick="cerrarModalPrincipal()">✕ Cerrar</button>
+            <h2 id="nombreProducto"></h2>
+            <div class="precio" id="precioProducto"></div>
+            <p style="color:#ddd;margin-bottom:20px;">Elige una opción para continuar:</p>
+            <div class="botones-modal">
+                <button onclick="cerrarModalPrincipal(); abrirModalPagos()" class="btn-comprar"><i class="fa fa-credit-card"></i> PAGAR / ADQUIRIR</button>
+                <a href="https://discord.com/channels/1488264408361865238/1488264409624084548" target="_blank" class="btn-soporte"><i class="fa fa-headphones"></i> IR A SOPORTE</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL DE MÉTODOS DE PAGO -->
+    <div id="modalPagos" class="modal">
+        <div class="modal-contenido">
+            <button class="cerrar-modal" onclick="cerrarModalPagos()">✕ Volver</button>
+            <h2>MÉTODOS DE PAGO</h2>
+            <p style="color:#ddd;margin-bottom:25px;">Elige el método que prefieras para realizar el pago:</p>
+            
+            <div class="botones-modal">
+                <a href="javascript:abrirApp('paypal://','https://play.google.com/store/apps/details?id=com.paypal.android.p2pmobile')" class="btn-pago">
+                    <i class="fa fa-paypal paypal"></i> PayPal
+                </a>
+                <a href="javascript:abrirApp('nequi://','https://play.google.com/store/apps/details?id=com.nequi.app')" class="btn-pago">
+                    <i class="fa fa-mobile nequi"></i> Nequi
+                </a>
+                <a href="javascript:abrirApp('daviplata://','https://play.google.com/store/apps/details?id=com.davivienda.daviplata')" class="btn-pago">
+                    <i class="fa fa-mobile daviplata"></i> Daviplata
+                </a>
+                <a href="javascript:abrirApp('bancolombia://','https://play.google.com/store/apps/details?id=com.bancolombia.app')" class="btn-pago">
+                    <i class="fa fa-bank bancolombia"></i> Bancolombia
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // ABRIR MODAL PRINCIPAL
+        function abrirModalPrincipal(nombre, precio) {
+            document.getElementById('nombreProducto').textContent = "Producto: " + nombre;
+            document.getElementById('precioProducto').textContent = precio;
+            document.getElementById('modalPrincipal').style.display = "flex";
+        }
+        function cerrarModalPrincipal() {
+            document.getElementById('modalPrincipal').style.display = "none";
+        }
+
+        // ABRIR MODAL DE PAGOS
+        function abrirModalPagos() {
+            document.getElementById('modalPagos').style.display = "flex";
+        }
+        function cerrarModalPagos() {
+            document.getElementById('modalPagos').style.display = "none";
+        }
+
+        // FUNCIÓN PARA ABRIR APP O DESCARGAR
+        function abrirApp(scheme, tienda) {
+            window.location.href = scheme;
+            setTimeout(function(){
+                if(confirm("¿No tienes la aplicación instalada?\n¿Quieres descargarla ahora?")) {
+                    window.location.href = tienda;
+                }
+            }, 2000);
+        }
+
+        // CERRAR AL TOCAR FUERA
+        window.onclick = function(e) {
+            if(e.target == document.getElementById('modalPrincipal')) cerrarModalPrincipal();
+            if(e.target == document.getElementById('modalPagos')) cerrarModalPagos();
+        }
+    </script>
+
+    <!-- REPRODUCTOR DE MÚSICA -->
+    <div style="position:fixed;bottom:0;left:0;width:1px;height:1px;opacity:0;pointer-events:none;overflow:hidden;z-index:-1;">
+        <iframe id="musica" width="1" height="1" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+    </div>
+    <script>
+        const canciones = [
+            "https://www.youtube.com/embed/qrTz4OEMk_0?si=8RyOx-PKC4GOfQV7&autoplay=1&mute=0&loop=0&playlist=qrTz4OEMk_0",
+            "https://www.youtube.com/embed/h269QbGCvPs?si=YupAsbabxcT1aI1t&autoplay=1&mute=0&loop=0&playlist=h269QbGCvPs",
+            "https://www.youtube.com/embed/7bQcByZicWw?si=px82ifDxXfADJSgY&autoplay=1&mute=0&loop=0&playlist=7bQcByZicWw",
+            "https://www.youtube.com/embed/siFCXKOQoXI?si=ysiJvczcHK9OUwV8&autoplay=1&mute=0&loop=0&playlist=siFCXKOQoXI",
+            "https://www.youtube.com/embed/0iklBbU6FXI?si=TveBCZOO_BoggBcr&autoplay=1&mute=0&loop=0&playlist=0iklBbU6FXI",
+            "https://www.youtube.com/embed/IT5RmPy0Tf4?si=UePtmHhUPDIsV41X&autoplay=1&mute=0&loop=0&playlist=IT5RmPy0Tf4",
+            "https://www.youtube.com/embed/aQnsbFtUHG4?si=lFOO4lpLyopQb2Jg&autoplay=1&mute=0&loop=0&playlist=aQnsbFtUHG4",
+            "https://www.youtube.com/embed/ZFww08Dc4ws?si=DpZqpgNd3opY5qZW&autoplay=1&mute=0&loop=0&playlist=ZFww08Dc4ws",
+            "https://www.youtube.com/embed/zkqfSHb1A_k?si=JPPK_tAlL2rkaTYM&autoplay=1&mute=0&loop=0&playlist=zkqfSHb1A_k",
+            "https://www.youtube.com/embed/ekFwDO6xOn0?si=N_eJzawQ-3NEPPTU&autoplay=1&mute=0&loop=0&playlist=ekFwDO6xOn0",
+            "https://www.youtube.com/embed/mzBg_Ln8j2U?si=prFIf4poOEkX-1VP&autoplay=1&mute=0&loop=0&playlist=mzBg_Ln8j2U",
+            "https://www.youtube.com/embed/NVLgkXylEuQ?si=jFhgSpbffXkpqbwu&autoplay=1&mute=0&loop=0&playlist=NVLgkXylEuQ",
+            "https://www.youtube.com/embed/TqsETF0P_Dw?si=6UP2kqBN7IHwMN-g&autoplay=1&mute=0&loop=0&playlist=TqsETF0P_Dw"
+        ];
+        let indiceActual = parseInt(localStorage.getItem('indiceCancion') || Math.floor(Math.random() * canciones.length));
+        document.getElementById('musica').src = canciones[indiceActual];
+        localStorage.setItem('indiceCancion', indiceActual);
+        setInterval(() => {
+            indiceActual = (indiceActual + 1) % canciones.length;
+            localStorage.setItem('indiceCancion', indiceActual);
+            document.getElementById('musica').src = canciones[indiceActual];
+        }, 180000);
+    </script>
+</body>
+                  </html>
+
